@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Node / Next.js (website)
+website/node_modules/
+website/.next/
+website/out/
+website/*.tsbuildinfo
+
+# Python (sales-engine)
+sales-engine/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
