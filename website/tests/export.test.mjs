@@ -225,3 +225,24 @@ test("packages explain different engagement models visually and the approach pag
   );
   assert.ok(!read("how-we-work/index.html").includes('class="loop-plate"'));
 });
+
+test("founder experience describes domains, roles and real project contributions without naming employers", () => {
+  const founder = read("founder/index.html");
+  assert.ok(founder.includes('id="career-experience"'));
+  for (const term of [
+    "Clinical NLP",
+    "Multilingual speech",
+    "Laboratory",
+    "Market research",
+    "AI team design",
+    "Fulbright",
+  ]) {
+    assert.ok(founder.includes(term), term);
+  }
+  assert.equal(
+    (founder.match(/class="founder-experience-card"/g) || []).length,
+    7,
+  );
+  assert.ok(founder.includes("Employer and client names are omitted"));
+  assert.ok(founder.includes("past employment and advisory roles"));
+});

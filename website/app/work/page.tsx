@@ -56,7 +56,7 @@ export default function Work() {
         <h2>Experience behind the delivery model</h2>
         <p>
           Jurica’s prior leadership work includes AI platform ownership and an
-          eight-person AI/data organization at Adia Health, plus production work
+          eight-person AI/data organization in healthcare, plus production work
           spanning NLP, semantic search and knowledge graphs. These are personal
           career credentials, not agency case studies.
         </p>
