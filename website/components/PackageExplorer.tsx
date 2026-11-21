@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "motion/react";
 import type { packages } from "../lib/agency";
 import type { PackageStory } from "../lib/package-stories";
 import { withBase } from "../lib/site";
+import AnimatedChapter, { chapterItem } from "./AnimatedChapter";
 
 type Package = (typeof packages)[number];
 const chapters = [
@@ -39,19 +40,28 @@ export default function PackageExplorer({
 }) {
   const [active, setActive] = useState<number | null>(0);
   const [enhanced, setEnhanced] = useState(false);
-  const details = useRef<(HTMLDetailsElement | null)[]>([]);
+  const sections = useRef<(HTMLDivElement | null)[]>([]);
+  const pendingScroll = useRef<number | null>(null);
   const reducedMotion = useReducedMotion() !== false;
+  const itemVariants = chapterItem(reducedMotion);
   useEffect(() => setEnhanced(true), []);
 
   function goTo(index: number) {
+    pendingScroll.current = index;
     setActive(index);
     requestAnimationFrame(() => {
-      const section = details.current[index];
-      section?.querySelector("summary")?.focus({ preventScroll: true });
-      section?.scrollIntoView({
-        behavior: reducedMotion ? "auto" : "smooth",
-        block: "start",
-      });
+      sections.current[index]
+        ?.querySelector<HTMLButtonElement>(".package-chapter-trigger")
+        ?.focus({ preventScroll: true });
+    });
+  }
+
+  function finishOpening(index: number) {
+    if (pendingScroll.current !== index) return;
+    pendingScroll.current = null;
+    sections.current[index]?.scrollIntoView({
+      behavior: reducedMotion ? "auto" : "smooth",
+      block: "start",
     });
   }
 
@@ -63,7 +73,9 @@ export default function PackageExplorer({
       <h3>Included in the engagement</h3>
       <ul>
         {offer.deliverables.map((item) => (
-          <li key={item}>{item}</li>
+          <motion.li key={item} variants={itemVariants}>
+            {item}
+          </motion.li>
         ))}
       </ul>
       <div className="package-takeaway">
@@ -78,7 +90,7 @@ export default function PackageExplorer({
       </p>
       <ol className="package-phases">
         {story.phases.map((phase, index) => (
-          <li key={phase.title}>
+          <motion.li key={phase.title} variants={itemVariants}>
             <span className="package-phase-number" aria-hidden="true">
               {String(index + 1).padStart(2, "0")}
             </span>
@@ -89,7 +101,7 @@ export default function PackageExplorer({
                 <strong>You leave with:</strong> {phase.output}
               </p>
             </div>
-          </li>
+          </motion.li>
         ))}
       </ol>
     </div>,
@@ -101,17 +113,21 @@ export default function PackageExplorer({
       </p>
       <div className="package-examples">
         {story.examples.map((example) => (
-          <article className="package-example" key={example.title}>
+          <motion.article
+            className="package-example"
+            key={example.title}
+            variants={itemVariants}
+          >
             <h3>{example.title}</h3>
             <dl>
               <dt>The situation</dt>
               <dd>{example.problem}</dd>
-                <dt>Approach</dt>
+              <dt>Approach</dt>
               <dd>{example.approach}</dd>
               <dt>A useful outcome</dt>
               <dd>{example.outcome}</dd>
             </dl>
-          </article>
+          </motion.article>
         ))}
       </div>
     </div>,
@@ -157,76 +173,102 @@ export default function PackageExplorer({
         </div>
         <p>Open any section, or follow the journey in order.</p>
       </header>
+      <nav
+        className="package-progress"
+        data-package-progress
+        aria-label="Explore package sections"
+      >
+        <ol>
+          {chapters.map((chapter, index) => (
+            <li key={chapter.id}>
+              {enhanced ? (
+                <button
+                  type="button"
+                  aria-current={active === index ? "step" : undefined}
+                  onClick={() => goTo(index)}
+                >
+                  <span className="package-progress-number">0{index + 1}</span>
+                  {["Scope", "Process", "Examples", "Investment"][index]}
+                  {active === index && (
+                    <motion.span
+                      className="package-progress-active"
+                      layoutId={
+                        reducedMotion ? undefined : "package-progress-active"
+                      }
+                      transition={{
+                        type: "spring",
+                        stiffness: 350,
+                        damping: 32,
+                      }}
+                    />
+                  )}
+                </button>
+              ) : (
+                <a href={`#explore-${chapter.id}`}>
+                  <span className="package-progress-number">0{index + 1}</span>
+                  {["Scope", "Process", "Examples", "Investment"][index]}
+                </a>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
       {chapters.map((chapter, index) => (
-        <details
+        <AnimatedChapter
           key={chapter.id}
-          id={`explore-${chapter.id}`}
-          className="package-chapter"
-          open={active === index}
-          ref={(node) => {
-            details.current[index] = node;
+          {...chapter}
+          index={index}
+          expanded={active === index}
+          enhanced={enhanced}
+          reducedMotion={reducedMotion}
+          sectionRef={(node) => {
+            sections.current[index] = node;
           }}
+          onSelect={() => {
+            if (active === index) {
+              pendingScroll.current = null;
+              setActive(null);
+            } else goTo(index);
+          }}
+          onExpanded={() => finishOpening(index)}
         >
-          <summary
-            onClick={(event) => {
-              event.preventDefault();
-              if (active === index) setActive(null);
-              else goTo(index);
-            }}
-          >
-            <span className="package-chapter-number" aria-hidden="true">
-              0{index + 1}
-            </span>
-            <span className="package-chapter-label">
-              <span>{chapter.title}</span>
-              <span>{chapter.note}</span>
-            </span>
-            <span className="package-chapter-toggle" aria-hidden="true"></span>
-          </summary>
-          <motion.div
-            className="package-chapter-body"
-            initial={false}
-            animate={{ y: reducedMotion || active === index ? 0 : 8 }}
-            transition={{ duration: reducedMotion ? 0 : 0.22, ease: "easeOut" }}
-          >
-            {content[index]}
-            {enhanced && (
-              <nav
-                className="package-chapter-controls"
-                aria-label={`${chapter.title} navigation`}
-              >
-                {index > 0 ? (
-                  <button
-                    type="button"
-                    className="agency-text-link"
-                    onClick={() => goTo(index - 1)}
-                  >
-                    ← Previous section
-                  </button>
-                ) : (
-                  <span className="agency-small">01 / 04</span>
-                )}
-                {index < chapters.length - 1 ? (
-                  <button
-                    type="button"
-                    className="agency-button small"
-                    onClick={() => goTo(index + 1)}
-                  >
-                    Next: {chapters[index + 1].title}{" "}
-                    <span aria-hidden="true">→</span>
-                  </button>
-                ) : (
-                  <a
-                    className="agency-text-link"
-                    href={withBase("/services/#packages")}
-                  >
-                    Compare the packages →
-                  </a>
-                )}
-              </nav>
-            )}
-          </motion.div>
-        </details>
+          {content[index]}
+          {enhanced && (
+            <nav
+              className="package-chapter-controls"
+              aria-label={`${chapter.title} navigation`}
+            >
+              {index > 0 ? (
+                <button
+                  type="button"
+                  className="agency-text-link"
+                  onClick={() => goTo(index - 1)}
+                >
+                  ← Previous section
+                </button>
+              ) : (
+                <span className="agency-small">01 / 04</span>
+              )}
+              {index < chapters.length - 1 ? (
+                <button
+                  type="button"
+                  className="agency-button small"
+                  onClick={() => goTo(index + 1)}
+                >
+                  Next: {chapters[index + 1].title}{" "}
+                  <span aria-hidden="true">→</span>
+                </button>
+              ) : (
+                <a
+                  className="agency-text-link"
+                  href={withBase("/services/#packages")}
+                >
+                  Compare the packages →
+                </a>
+              )}
+            </nav>
+          )}
+        </AnimatedChapter>
       ))}
     </section>
   );

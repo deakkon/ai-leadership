@@ -22,7 +22,11 @@ Reviewed 21 November 2026. These choices apply Apple's design reasoning to a res
 
 ## Service exploration
 
-Service and package cards are full native links with concise accessible names. Each package retains its canonical URL. Four native disclosure sections cover scope, process, illustrative use cases and investment. Motion for React adds a short content transition and respects reduced-motion preferences; it does not delay initial rendering. Previous/next controls move focus to the selected section and bring it into view. Without JavaScript, the disclosure sections still open natively and all content remains in the exported HTML. Example scenarios are labeled as illustrative, not presented as client results.
+Service and package cards are full native links with concise accessible names. Each package retains its canonical URL. Four sections cover scope, process, illustrative use cases and investment. After hydration, Motion animates the full panel height and staggered content, with an animated section indicator. Collapsed panels are inert and excluded from the accessibility tree. Previous/next controls focus the selected heading; scrolling waits until expansion completes. Without JavaScript, native disclosures still work and all content remains in exported HTML. Reduced-motion users get instant panel changes and static diagrams. Example scenarios are labeled as illustrative, not presented as client results.
+
+Each package has a different SVG infographic with a readable HTML caption and legend: discovery options, build pipeline, monthly cadence and leadership decisions. The approach page uses a five-stage map; the infinity visual remains on the homepage. Diagram accents animate once on entering view. No decorative animation repeats continuously.
+
+Supported browsers also get a brief transition between same-origin pages, following [Chrome's cross-document view-transition guidance](https://developer.chrome.com/docs/web-platform/view-transitions/cross-document). This is enabled only when the visitor has no reduced-motion preference; ordinary navigation remains the fallback.
 
 [Web reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html): use relative typography, avoid fixed control heights, retain browser zoom, and check narrow layouts. A 320-CSS-pixel viewport check exercises the reflow width used in the guidance; it is not proof of every zoom, text-resize or assistive-technology behavior.
 

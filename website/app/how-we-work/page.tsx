@@ -1,4 +1,5 @@
-import { AgencyCTA, PageIntro, LoopDiagram } from "../../components/Agency";
+import { AgencyCTA, PageIntro } from "../../components/Agency";
+import EngagementVisual from "../../components/EngagementVisual";
 import { pageMetadata } from "../../lib/agency";
 export const metadata = pageMetadata(
   "My approach to AI strategy and software delivery",
@@ -40,7 +41,7 @@ export default function How() {
           delivery.
         </p>
       </PageIntro>
-      <LoopDiagram />
+      <EngagementVisual kind="approach" />
       <section className="agency-section">
         <div className="agency-process">
           {steps.map(([title, body]) => (

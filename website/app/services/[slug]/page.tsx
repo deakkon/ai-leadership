@@ -6,6 +6,7 @@ import { serviceGuides } from "../../../lib/service-guides";
 import ServiceGuide from "../../../components/ServiceGuide";
 import PackageExplorer from "../../../components/PackageExplorer";
 import { packageStories } from "../../../lib/package-stories";
+import EngagementVisual from "../../../components/EngagementVisual";
 export function generateStaticParams() {
   return [...packages, ...serviceGuides].map((p) => ({ slug: p.slug }));
 }
@@ -56,6 +57,7 @@ export default async function Service({
       <PageIntro kicker={p.category} title={p.name}>
         <p>{p.summary}</p>
       </PageIntro>
+      <EngagementVisual kind={p.slug} />
       <div className="package-deep-dive">
         <aside
           className="agency-detail-price package-price-summary"

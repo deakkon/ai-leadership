@@ -206,3 +206,22 @@ test("package cards link as a whole and every package exports a complete guided 
     assert.match(html, /data-package-explorer/);
   }
 });
+
+test("packages explain different engagement models visually and the approach page uses its own process map", () => {
+  const titles = new Set();
+  for (const slug of ["discovery", "build", "partnership", "leadership"]) {
+    const html = read(`services/${slug}/index.html`);
+    assert.ok(html.includes(`data-engagement-visual="${slug}"`), slug);
+    const title = html.match(/id="engagement-visual-title"[^>]*>([^<]+)/)?.[1];
+    assert.ok(title, `Diagram heading for ${slug}`);
+    titles.add(title);
+    assert.ok(html.includes("data-package-progress"), slug);
+  }
+  assert.equal(titles.size, 4);
+  assert.ok(
+    read("how-we-work/index.html").includes(
+      'data-engagement-visual="approach"',
+    ),
+  );
+  assert.ok(!read("how-we-work/index.html").includes('class="loop-plate"'));
+});
