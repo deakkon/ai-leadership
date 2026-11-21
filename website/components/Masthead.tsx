@@ -1,44 +1,36 @@
 import { identity, nav, withBase } from "../lib/site";
-import MobileNav from "./MobileNav";
-import StatusLine from "./StatusLine";
-import ThemePicker from "./ThemePicker";
-
+import { Wordmark } from "./Agency";
 export default function Masthead() {
   return (
-    <header className="masthead">
-      <div className="masthead-main">
-        <div className="container">
-          <a className="wordmark" href={withBase("/")}>
-            {identity.name}
+    <header className="agency-header">
+      <a className="agency-brand-link" href={withBase("/")}>
+        <Wordmark />
+      </a>
+      <nav className="agency-nav" aria-label="Primary navigation">
+        {nav.map((link) => (
+          <a href={link.href} key={link.href}>
+            {link.label}
           </a>
-          <nav className="nav-links" aria-label="Primary navigation">
-            {nav.map((link) => (
-              <a key={link.href} href={link.href}>
-                {link.label}
-              </a>
-            ))}
-          </nav>
-          <div className="masthead-cta">
-            <ThemePicker />
-            <a className="btn btn-primary" href={identity.bookingUrl} target="_blank" rel="noopener">
-              Book a call
+        ))}
+      </nav>
+      <a
+        className="agency-button small"
+        href={identity.bookingUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Let’s talk
+      </a>
+      <details className="agency-mobile-menu">
+        <summary>Menu</summary>
+        <nav aria-label="Mobile navigation">
+          {nav.map((link) => (
+            <a href={link.href} key={link.href}>
+              {link.label}
             </a>
-            <MobileNav />
-          </div>
-        </div>
-      </div>
-      <div className="masthead-meta">
-        <div className="container">
-          <StatusLine text="Berlin, EU/EMEA" />
-          <span className="masthead-locale">
-            <a href={identity.emailHref}>{identity.email}</a>
-            <span aria-hidden="true"> · </span>
-            <a href={identity.linkedinUrl} target="_blank" rel="noopener">
-              LinkedIn
-            </a>
-          </span>
-        </div>
-      </div>
+          ))}
+        </nav>
+      </details>
     </header>
   );
 }

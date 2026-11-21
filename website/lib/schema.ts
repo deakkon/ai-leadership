@@ -3,12 +3,16 @@ import { identity, siteUrl } from "./site";
 export const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": `${siteUrl}/founder/#person`,
   name: identity.name,
   jobTitle: "Fractional Chief AI Officer and AI Transformation Executive",
-  url: siteUrl,
+  url: `${siteUrl}/founder/`,
   email: "mailto:seva.jurica@gmail.com",
-  image: `${siteUrl}/og.png`,
-  address: { "@type": "PostalAddress", addressLocality: "Berlin", addressCountry: "DE" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Berlin",
+    addressCountry: "DE",
+  },
   sameAs: [identity.linkedinUrl],
   knowsAbout: [
     "AI Strategy",
@@ -27,7 +31,10 @@ export const personSchema = {
     name: "Doctorate (PhD)",
     credentialCategory: "degree",
     educationalLevel: "Doctoral",
-    recognizedBy: { "@type": "CollegeOrUniversity", name: "University of Zagreb" },
+    recognizedBy: {
+      "@type": "CollegeOrUniversity",
+      name: "University of Zagreb",
+    },
     description:
       "Thesis: web news portal content personalization using information extraction techniques and weighted Voronoi diagrams.",
   },
@@ -36,7 +43,7 @@ export const personSchema = {
 export const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Dr. Jurica Ševa — AI Transformation & Engineering Leadership",
+  name: "Hooman in the Loop — Human-led software engineering",
   url: siteUrl,
   areaServed: ["Germany", "European Union", "EMEA"],
   provider: { "@type": "Person", name: identity.name },

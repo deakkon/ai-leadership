@@ -1,87 +1,20 @@
-# Dr. Jurica Ševa
+# Hooman in the Loop
 
-> Executive-level AI leadership with the technical depth to take strategy all the way into production.
+> Founder-led software engineering, AI automation and fractional AI / CTO leadership. Proposed trading brand of Dr. Jurica Ševa, a Berlin-based Freiberufler.
 
-**Organizing principle: AI systems that make it to production.** The practice and the writing are structured around three pillars — Strategy · Architecture · Transformation.
-
-Fractional Chief AI Officer and AI Transformation & Engineering Executive based in Berlin, Germany, working across EU/EMEA. One accountable operator across strategy, architecture, engineering and organizational leadership.
-
-Canonical site: https://deakkon.github.io/ai-leadership
-LinkedIn: https://www.linkedin.com/in/juricaseva
-Contact: seva.jurica@gmail.com · Book a call: https://koalendar.com/e/meet-with-jurica
-
-## What I offer
-
-Three productized engagement models, aligned to the three pillars:
-
-- AI Transformation Diagnostic — ~2 weeks, €7,500–12,500. Executive interviews, AI maturity assessment, architecture review, opportunity portfolio, governance & reliability assessment, and a 90-day roadmap. *(Pillar: Strategy — decide what AI should do for the business.)*
-- Fractional CAIO / VP AI (also Fractional CTO) — 1 day/week €7–9k/month, 2 days/week €13–16k/month. Strategy, architecture ownership, executive alignment, engineering leadership, AI operating model, vendor decisions, roadmap and governance. *(Pillars: Architecture · Transformation — design systems that deliver it, then turn strategy into operating capability.)*
-- AI Transformation Mandate — 3–6 months, ~€20–30k/month. Taking an AI program from fragmented PoCs into production with one accountable operator. *(Pillar: Transformation — turn the strategy into operating capability.)*
-
-Engagements are scoped as mandates, not hours: a two-week diagnostic, a fractional CAIO/VP mandate, or a three-to-six-month transformation program. Process: 01 Brief → 02 Diagnostic → 03 Mandate.
-
-## Expertise
-
-Organized under the three pillars that structure the practice:
-
-### Strategy — decide what AI should do for the business
-- Fractional and interim AI leadership (Fractional CAIO / VP AI / CTO)
-- AI transformation strategy, portfolio assessment and operating models
-- AI governance, value hypotheses and build-buy-partner decisions
-
-### Architecture — design systems that can actually deliver it
-- AI platform strategy: model access, data and retrieval, orchestration, APIs, security, evaluation, observability and lifecycle management
-- Generative AI and agentic AI systems: RAG, agents, workflow automation
-- AI evaluation, reliability and human controls designed for production rather than demos
-
-### Transformation — turn the strategy into operating capability
-- PoC-to-Production Recovery: diagnosing quality, latency, cost, governance, ownership and integration blockers
-- Technical due diligence: independent assessment of AI capability, architecture, team maturity and delivery risk
-- AI/data organization design and engineering leadership
-
-## Background
-
-Dr. Jurica Ševa has 10+ years of experience across applied AI, NLP, data and production software. He has held VP and Head-of-function roles, including VP of AI & Data Science at Adia Health, where he owned the AI platform roadmap and architecture and built an 8-person cross-timezone AI/data organization.
-
-He currently leads fractional AI engagements in regulated healthcare and financial document intelligence, and previously led AI engineering at the Berlin product studio Space Inch and advised team.blue on AI organization design.
-
-He holds a PhD from the University of Zagreb, with research in information extraction, biomedical text mining, semantic data integration, knowledge graphs and multi-agent systems — including the PREDICT cancer-genomics knowledge base and multi-agent traffic control for autonomous UAVs. He works in English, German and Croatian.
-
-## Key claims (evidence form)
-
-- 10+ years in applied AI, NLP, data, search and software systems.
-- VP-level: owned the AI platform roadmap and architecture at Adia Health (VP of AI & Data Science).
-- 8-person cross-timezone AI/data organization built and led.
-- Regulated production: healthcare AI under HIPAA, GDPR and SOC 2 constraints.
-- PhD, University of Zagreb (2007–2014), thesis on web news portal content personalization using information extraction techniques and weighted Voronoi diagrams.
-- Fulbright Visiting Scholar in Computer Science, Purdue University.
-- 9 certifications: TensorFlow in Practice, Probabilistic Graphical Models, Knowledge Graphs, Machine Learning with Big Data, Hadoop, Introduction to Big Data, Cluster Analysis in Data Mining, Mining Massive Datasets, Machine Learning.
-
-## Platforms and projects
-
-- Adia Health (Mar 2024–Jul 2025): VP of AI & Data Science; production AI platform for healthcare payment transformation combining GenAI, clinical NLP, knowledge graphs and semantic search under HIPAA, GDPR and SOC 2 constraints; built and led an 8-person cross-timezone AI/data organization.
-- Ada Health (Mar 2019–Jun 2021): NLP Engineer to Head of NLP; first company-wide NLP roadmap, extraction pipelines turning PubMed and EHR content into UMLS-backed knowledge systems, and an active-learning annotation platform (30% reduction in annotation labeling effort).
-- Space Inch (Oct 2025–Jan 2026): Head of AI Engineering; delivered GenAI-enabled client features end-to-end and defined AI tooling, evaluation and governance workflows.
-- CompuGroup Medical (Jul 2021–Apr 2022): Senior AI Specialist / ML Engineer; multilingual dental ASR platform from PoC to a containerized Azure MVP, plus disease-prediction models combining MIMIC-III EHR data with a UMLS knowledge graph.
-- Flow Health (Jan–Jul 2024): Head of Data Science; AI applications over real-world health data aligned with product strategy and regulated data usage.
-- SYNLAB (Jan–Dec 2023): Senior AI Engineer; ML solutions for lab-test workflow automation and diagnostic support in a regulated laboratory environment.
-- Lakatu (May–Dec 2022): Head of Data Science; NLP and information-retrieval pipelines over multi-domain document data for market-research consulting.
+Canonical site: https://deakkon.github.io/ai-leadership/
+Founder: https://deakkon.github.io/ai-leadership/founder/
+Services: https://deakkon.github.io/ai-leadership/services/
+Process: https://deakkon.github.io/ai-leadership/how-we-work/
+Insights: https://deakkon.github.io/ai-leadership/insights/
+Contact: https://deakkon.github.io/ai-leadership/contact/
 
 ## Engagements
+- Discovery sprint: €4,500, up to two weeks, bounded decision brief.
+- Focused build: from €18,000, typically four to six weeks, defined release.
+- Delivery partnership: from €24,000/month, initial three-month engagement.
+- Fractional AI / CTO leadership: from €7,500/month, defined mandate and capacity.
+Prices exclude VAT where applicable. Final scope and fees are agreed in writing. Production hosting and model usage are separate.
 
-- Recent fractional engagements in regulated healthcare and financial document intelligence (client names under NDA).
-- team.blue (Jul–Dec 2025): AI Hiring & Organization Advisor — role design, technical screening, interview design and team-structure advice for building the AI function.
-
-## Writing
-
-- Agentic AI reliability: what changes when software can choose its own path? — A production framework for evaluation, observability and bounded autonomy. (tags: LLM reliability, Agentic AI; theme: Architecture)
-- AI platform strategy: what belongs in the platform? — Separate reusable capabilities from product-specific intelligence before centralization becomes a bottleneck. (tags: AI platform strategy, AI architecture; theme: Architecture)
-- From AI PoC to production: the six gaps that kill good demos — Why quality, ownership, evaluation, integration, cost and operations must be designed together. (tags: AI transformation, AI engineering; theme: Transformation)
-
-## Key pages
-
-- /ai-leadership/ — Executive profile, offers and services
-- /ai-leadership/insights — Essays by theme (Strategy · Architecture · Transformation)
-- /ai-leadership/insights/agentic-ai-reliability
-- /ai-leadership/insights/ai-platform-strategy
-- /ai-leadership/insights/from-ai-poc-to-production
+## Attribution
+Founder career experience is not agency client work. Work-page briefs are illustrative. No agency certifications, guaranteed ROI, autonomous staffing equivalents or client results are claimed.

@@ -35,7 +35,7 @@ export const insights: Insight[] = [
     ],
     serviceHref: withBase("/#services"),
     serviceLabel: "GenAI & Agentic Systems",
-    offerLabel: "Fractional CAIO / VP AI",
+    offerLabel: "Fractional AI / CTO leadership",
   },
   {
     slug: "ai-platform-strategy",
@@ -53,7 +53,7 @@ export const insights: Insight[] = [
     ],
     serviceHref: withBase("/#services"),
     serviceLabel: "AI Platform Strategy",
-    offerLabel: "AI Transformation Diagnostic",
+    offerLabel: "Discovery sprint",
   },
   {
     slug: "from-ai-poc-to-production",
@@ -71,7 +71,7 @@ export const insights: Insight[] = [
     ],
     serviceHref: withBase("/#services"),
     serviceLabel: "PoC-to-Production Recovery",
-    offerLabel: "AI Transformation Mandate",
+    offerLabel: "Delivery partnership",
   },
 ];
 
@@ -80,12 +80,12 @@ export function getInsight(slug: string) {
 }
 
 export function insightMetadata(insight: Insight): Metadata {
-  const url = `${siteUrl}/insights/${insight.slug}`;
-  const ogImage = `${siteUrl}/og.png`;
+  const url = `${siteUrl}/insights/${insight.slug}/`;
+  const ogImage = `${siteUrl}/agency-og.png`;
   return {
     title: insight.title,
     description: insight.desc,
-    alternates: { canonical: `/insights/${insight.slug}` },
+    alternates: { canonical: `${siteUrl}/insights/${insight.slug}/` },
     openGraph: {
       type: "article",
       url,
@@ -114,7 +114,7 @@ export function slugifyHeading(text: string) {
 }
 
 export function articleSchema(insight: Insight) {
-  const url = `${siteUrl}/insights/${insight.slug}`;
+  const url = `${siteUrl}/insights/${insight.slug}/`;
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -123,7 +123,7 @@ export function articleSchema(insight: Insight) {
     datePublished: insight.datePublished,
     dateModified: insight.dateModified,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
-    image: `${siteUrl}/og.png`,
+    image: `${siteUrl}/agency-og.png`,
     author: {
       "@type": "Person",
       name: identity.name,
@@ -149,7 +149,7 @@ export function articleSchema(insight: Insight) {
 }
 
 export function breadcrumbSchema(insight: Insight) {
-  const url = `${siteUrl}/insights/${insight.slug}`;
+  const url = `${siteUrl}/insights/${insight.slug}/`;
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

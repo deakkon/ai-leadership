@@ -1,9 +1,6 @@
-export const siteUrl = "https://deakkon.github.io/ai-leadership";
-
-/* Static export is served under the GitHub Pages project subpath; absolute
-   internal hrefs must be prefixed to resolve on the deployed site. */
-export const basePath = "/ai-leadership";
-export const withBase = (href: string) => (href.startsWith("/") ? `${basePath}${href}` : href);
+import { packages } from "./agency";
+import { withBase } from "./site-config";
+export { siteUrl, basePath, withBase } from "./site-config";
 
 export const identity = {
   name: "Dr. Jurica Ševa",
@@ -12,11 +9,12 @@ export const identity = {
   roleShort: "Fractional CAIO",
   location: "Berlin, EU/EMEA",
   email: "seva.jurica@gmail.com",
-  emailHref: "mailto:seva.jurica@gmail.com?subject=AI%20leadership%20engagement",
+  emailHref:
+    "mailto:seva.jurica@gmail.com?subject=AI%20leadership%20engagement",
   bookingUrl: "https://koalendar.com/e/meet-with-jurica",
   linkedinUrl: "https://www.linkedin.com/in/juricaseva",
   mandateLine:
-    "Engagements: AI Transformation Diagnostic · Fractional CAIO / VP AI · Transformation Mandate",
+    "Engagements: Discovery sprint · Focused build · Delivery partnership · Fractional AI / CTO leadership",
   credentials: "PhD (Univ. of Zagreb) · English, German, Croatian",
 };
 
@@ -29,15 +27,17 @@ export const hero = {
   eyebrow: "Dr. Jurica Ševa · Fractional CAIO — Berlin, EU/EMEA",
   h1: "AI Strategy · Architecture · Transformation",
   thesis,
-  support: "Executive AI leadership with the depth to take strategy into production.",
+  support:
+    "Executive AI leadership with the depth to take strategy into production.",
 };
 
 export const nav = [
-  { href: withBase("/#services"), label: "Services" },
-  { href: withBase("/#experience"), label: "Experience" },
-  { href: withBase("/#mandates"), label: "Mandates" },
-  { href: withBase("/#insights"), label: "Insights" },
-  { href: withBase("/#contact"), label: "Contact" },
+  { href: withBase("/services/"), label: "Services" },
+  { href: withBase("/how-we-work/"), label: "How we work" },
+  { href: withBase("/work/"), label: "Work" },
+  { href: withBase("/founder/"), label: "Founder" },
+  { href: withBase("/insights/"), label: "Insights" },
+  { href: withBase("/contact/"), label: "Contact" },
 ];
 
 export type Offer = {
@@ -49,35 +49,14 @@ export type Offer = {
   pillar: string;
 };
 
-export const offers: Offer[] = [
-  {
-    num: "01",
-    title: "AI Transformation Diagnostic",
-    timeline: "~2 weeks",
-    rate: "€7,500–12,500",
-    detail:
-      "Executive interviews, AI maturity assessment, architecture review, opportunity portfolio, governance & reliability assessment, and a 90-day roadmap.",
-    pillar: "Strategy",
-  },
-  {
-    num: "02",
-    title: "Fractional CAIO / VP AI",
-    timeline: "1–2 days/week",
-    rate: "€7–9k/mo · €13–16k/mo",
-    detail:
-      "Strategy, architecture ownership, executive alignment, engineering leadership, AI operating model, vendor decisions, roadmap and governance. Also operates as Fractional CTO.",
-    pillar: "Architecture · Transformation",
-  },
-  {
-    num: "03",
-    title: "AI Transformation Mandate",
-    timeline: "3–6 months",
-    rate: "~€20–30k/mo",
-    detail:
-      "Taking an AI program from fragmented PoCs into production — one accountable operator across strategy, architecture, engineering and organizational leadership.",
-    pillar: "Transformation",
-  },
-];
+export const offers: Offer[] = packages.map((offer, index) => ({
+  num: String(index + 1).padStart(2, "0"),
+  title: offer.name,
+  timeline: offer.timeline,
+  rate: offer.price,
+  detail: offer.summary,
+  pillar: offer.category,
+}));
 
 export type Service = { id: string; title: string; desc: string };
 
@@ -179,7 +158,7 @@ export const whenToBringMeIn = [
 ];
 
 export const engagementModel =
-  "Engagements are scoped as mandates, not hours: a two-week diagnostic, a fractional CAIO/VP mandate, or a three-to-six-month transformation program.";
+  "Engagements are scoped around a decision, a bounded release, an ongoing delivery allocation or a defined leadership mandate.";
 
 export const proofStrip = [
   { value: "10+ yrs", label: "Applied AI, NLP & software" },
