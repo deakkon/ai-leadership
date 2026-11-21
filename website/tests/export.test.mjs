@@ -25,7 +25,7 @@ test("agency, founder, services and lead qualification are exported", () => {
     assert.ok(existsSync(new URL(`../out/${path}`, import.meta.url)), path);
   }
   assert.match(read("index.html"), /Hooman in the Loop/);
-  assert.match(read("index.html"), /Software built with AI/);
+  assert.match(read("index.html"), /AI strategy and software/);
   assert.match(read("services/index.html"), /€4,500/);
 });
 
@@ -160,13 +160,49 @@ test("navigation identifies the current page and parent section", () => {
   assert.match(read("founder/index.html"), /aria-current="page"[^>]*>Founder</);
 });
 
-test("appearance and form feedback have accessible names and associations", () => {
-  const home = read("index.html");
-  assert.match(home, /aria-label="Appearance"/);
-  assert.match(home, /value="system"/);
+test("form feedback has accessible names and associations", () => {
   const contact = read("contact/index.html");
   assert.match(contact, /id="brief-name"/);
   assert.match(contact, /aria-describedby="brief-problem-help/);
   assert.match(contact, /aria-live="polite"/);
   assert.match(contact, /Budget range \(optional\)/);
+});
+
+test("site uses fixed light appearance, personal navigation and a contrasting home section", () => {
+  for (const route of ["", "services/", "services/build/", "how-we-work/"]) {
+    const html = read(`${route}index.html`);
+    assert.match(html, /data-theme="light"/);
+    assert.ok(
+      !/aria-label="Appearance"|hitl:appearance|localStorage/.test(html),
+      route,
+    );
+    assert.match(html, />My approach</);
+    assert.doesNotMatch(html, />How we work</);
+  }
+  assert.match(read("index.html"), /agency-inverted/);
+});
+
+test("package cards link as a whole and every package exports a complete guided deep dive", () => {
+  const services = read("services/index.html");
+  for (const slug of ["discovery", "build", "partnership", "leadership"]) {
+    const card = [...services.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)].find(
+      (match) =>
+        match[1].includes(`href="/ai-leadership/services/${slug}/"`) &&
+        match[1].includes('class="agency-package"'),
+    );
+    assert.ok(card, `Whole-card link for ${slug}`);
+    assert.match(card[2], /agency-price/);
+    const html = read(`services/${slug}/index.html`);
+    for (const id of ["scope", "journey", "examples", "investment"]) {
+      assert.ok(html.includes(`id="explore-${id}"`), `${slug}: ${id}`);
+    }
+    assert.match(html, /Illustrative scenarios/);
+    assert.equal(
+      (html.match(/class="package-example"/g) || []).length,
+      3,
+      slug,
+    );
+    assert.ok(html.includes('href="/ai-leadership/services/#packages"'));
+    assert.match(html, /data-package-explorer/);
+  }
 });

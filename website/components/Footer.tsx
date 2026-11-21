@@ -8,7 +8,7 @@ export default function Footer() {
           <Wordmark />
         </a>
         <p>
-          Senior judgment. Agent-assisted execution.
+          AI strategy and software engineering.
           <br />
           Berlin, Germany · Working globally.
         </p>
@@ -29,7 +29,7 @@ export default function Footer() {
         <span>Hooman in the Loop · Dr. Jurica Ševa</span>
         <a href={withBase("/legal/")}>Legal notice</a>
         <a href={withBase("/privacy/")}>Privacy</a>
-        <span>Human-led, by design.</span>
+        <span>Led by Dr. Jurica Ševa.</span>
       </div>
     </footer>
   );

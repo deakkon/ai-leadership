@@ -10,27 +10,53 @@ export const metadata = pageMetadata(
 export default function Services() {
   return (
     <main id="main" className="agency-main">
-      <PageIntro kicker="Ways to work together" title="Start where you are.">
+      <PageIntro
+        kicker="Services & packages"
+        title="Find the right engagement."
+      >
         <p>
-          An AI investment decision. A bounded release. A steady delivery
-          cadence. Choose the engagement that fits the problem.
+          Advice on an AI investment, a software project or ongoing technical
+          leadership. Explore the services and packages to see what fits.
         </p>
       </PageIntro>
       <section
-        className="agency-section agency-prose"
+        className="agency-section"
         aria-label="Find the service for your priorities"
       >
         <h2>What needs to move forward?</h2>
-        {serviceGuides.map((guide) => (
-          <section key={guide.slug}>
-            <h3>
-              <a href={withBase(`/services/${guide.slug}/`)}>{guide.title}</a>
-            </h3>
-            <p>{guide.fit}</p>
-          </section>
-        ))}
+        <div className="service-tiles">
+          {serviceGuides.map((guide) => (
+            <a
+              className="service-tile"
+              key={guide.slug}
+              href={withBase(`/services/${guide.slug}/`)}
+              aria-labelledby={`service-${guide.slug}-title`}
+            >
+              <p className="agency-kicker">{guide.kicker}</p>
+              <h3 id={`service-${guide.slug}-title`}>{guide.title}</h3>
+              <p>{guide.fit}</p>
+              <span className="agency-text-link">
+                Explore this service <span aria-hidden="true">↗</span>
+              </span>
+            </a>
+          ))}
+        </div>
       </section>
-      <PackageGrid all />
+      <section
+        className="agency-section"
+        id="packages"
+        aria-labelledby="packages-title"
+      >
+        <div className="agency-section-head">
+          <p className="agency-kicker">Choose an engagement</p>
+          <h2 id="packages-title">Choose a package.</h2>
+          <p>
+            Explore each package for its scope, working process, example use
+            cases and commercial terms.
+          </p>
+        </div>
+        <PackageGrid all />
+      </section>
       <section className="agency-section agency-prose">
         <h2>Clear scope before commitment.</h2>
         <p>

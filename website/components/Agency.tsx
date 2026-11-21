@@ -19,22 +19,13 @@ export function AgencyCTA({
   return (
     <section className="agency-cta" id="contact">
       <div>
-        <p className="agency-kicker">Start with the problem</p>
-        <h2>
-          {title ?? (
-            <>
-              What should your software
-              <br />
-              make possible?
-            </>
-          )}
-        </h2>
+        <p className="agency-kicker">Get in touch</p>
+        <h2>{title ?? <>What do you need to get done?</>}</h2>
         <p>
           {description ?? (
             <>
-              Bring a workflow, a stalled prototype or a product decision.
-              <br />
-              We’ll work out whether there’s a useful next step together.
+              Tell me about the project or decision you’re working on. I’ll help
+              you work out the next step.
             </>
           )}
         </p>
@@ -49,7 +40,7 @@ export function AgencyCTA({
           Book an introductory call
         </a>
         <a className="agency-text-link" href={withBase("/contact/")}>
-          Send a project brief
+          Send a brief
         </a>
         <span className="agency-small">
           Berlin · English, German &amp; Croatian
@@ -75,29 +66,38 @@ export function PageIntro({
     </header>
   );
 }
-export function PackageGrid({ all = false }: { all?: boolean }) {
+export function PackageGrid({
+  all = false,
+  slugs,
+}: {
+  all?: boolean;
+  slugs?: readonly string[];
+}) {
   return (
     <div className="agency-packages">
-      {packages.slice(0, all ? 4 : 3).map((p) => (
-        <article className="agency-package" key={p.slug}>
+      {(slugs
+        ? packages.filter((p) => slugs.includes(p.slug))
+        : packages.slice(0, all ? 4 : 3)
+      ).map((p) => (
+        <a
+          className="agency-package"
+          key={p.slug}
+          href={withBase(`/services/${p.slug}/`)}
+          aria-labelledby={`package-${p.slug}-title`}
+        >
           <p className="agency-kicker">{p.category}</p>
-          <h3>
-            <a href={withBase(`/services/${p.slug}/`)}>{p.name}</a>
-          </h3>
+          <h3 id={`package-${p.slug}-title`}>{p.name}</h3>
           <p>{p.summary}</p>
           <div className="agency-package-bottom">
             <p className="agency-price">
               {p.price}
               <span>{p.unit} · ex VAT where applicable</span>
             </p>
-            <a
-              className="agency-text-link"
-              href={withBase(`/services/${p.slug}/`)}
-            >
-              Explore the scope
-            </a>
+            <span className="agency-text-link package-card-link">
+              Explore the engagement <span aria-hidden="true">↗</span>
+            </span>
           </div>
-        </article>
+        </a>
       ))}
     </div>
   );

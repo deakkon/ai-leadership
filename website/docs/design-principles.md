@@ -6,7 +6,7 @@ Reviewed 21 November 2026. These choices apply Apple's design reasoning to a res
 
 [Design principles](https://developer.apple.com/design/human-interface-guidelines/design-principles): keep the service journey direct and familiar, communicate what controls do, and let visitors choose a conversation or a written brief. The brand, offers and founder identity remain intact.
 
-[Typography](https://developer.apple.com/design/human-interface-guidelines/typography): use the platform's UI font through the system font stack, readable regular/medium weights and a restrained type hierarchy. Keep the editorial serif as a brand accent, rather than copying or redistributing Apple's downloadable font assets. Supporting labels are enlarged; body copy has a comfortable measure.
+[Typography](https://developer.apple.com/design/human-interface-guidelines/typography): use one system font family for headings, body copy and labels, with readable regular/medium weights and a restrained hierarchy. The earlier editorial serif accent and downloaded font assets were removed following product feedback. Supporting labels are enlarged; body copy has a comfortable measure.
 
 [Layout](https://developer.apple.com/design/human-interface-guidelines/layout): group related information with spacing and consistent surfaces. Use responsive grids that become one column on compact screens. The delivery diagram gets HTML labels on small screens because scaling its SVG text was unreadable.
 
@@ -18,10 +18,14 @@ Reviewed 21 November 2026. These choices apply Apple's design reasoning to a res
 
 [Text fields](https://developer.apple.com/design/human-interface-guidelines/text-fields): persistent labels, associated helper/error descriptions, logical tab order, meaningful input types and clear required/optional distinctions. Company/budget/timing are optional. Validate the essentials before preparing a draft. Move focus to the first invalid field or the prepared-brief heading. Announce clipboard success/failure; invalidate a prepared brief if its source details change. Nothing is sent automatically.
 
-[Dark Mode](https://developer.apple.com/design/human-interface-guidelines/dark-mode): follow the OS preference by default and react to live OS changes. Apple discourages a separate appearance choice in native apps. The website intentionally offers an optional System/Light/Dark override for web visitors; System remains the default and can be restored. The browser theme color and page palette use the same definitions.
+[Dark Mode](https://developer.apple.com/design/human-interface-guidelines/dark-mode): product direction now chooses a fixed light presentation. There is no appearance control or startup preference script. One dark-green homepage section provides contrast within the light design; it is not a theme switch. This replaces the earlier System/Light/Dark implementation.
+
+## Service exploration
+
+Service and package cards are full native links with concise accessible names. Each package retains its canonical URL. Four native disclosure sections cover scope, process, illustrative use cases and investment. Motion for React adds a short content transition and respects reduced-motion preferences; it does not delay initial rendering. Previous/next controls move focus to the selected section and bring it into view. Without JavaScript, the disclosure sections still open natively and all content remains in the exported HTML. Example scenarios are labeled as illustrative, not presented as client results.
 
 [Web reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html): use relative typography, avoid fixed control heights, retain browser zoom, and check narrow layouts. A 320-CSS-pixel viewport check exercises the reflow width used in the guidance; it is not proof of every zoom, text-resize or assistive-technology behavior.
 
 ## Verification scope
 
-Export checks cover page/section navigation semantics, appearance naming, form descriptions and existing canonical/link integrity. Browser checks cover desktop/mobile layouts, light/dark selection, narrow reflow, keyboard menu dismissal, invalid/valid form states, draft editing and focus behavior. Record exact checks and results in the task handoff. Manual screen-reader, all-browser and full WCAG conformance audits are outside this pass.
+Export checks cover navigation semantics, fixed light appearance, full-card links, complete package content, form descriptions and canonical/link integrity. Earlier browser checks covered theme selection and form behavior; current verification adds the fixed light presentation and package journey. Record exact checks and results in the task handoff. Manual screen-reader, all-browser and full WCAG conformance audits are outside this pass.

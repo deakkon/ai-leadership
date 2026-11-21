@@ -1,4 +1,4 @@
-import { AgencyCTA, PageIntro } from "./Agency";
+import { AgencyCTA, PackageGrid, PageIntro } from "./Agency";
 import { serviceGuides } from "../lib/service-guides";
 import { siteUrl, withBase } from "../lib/site";
 
@@ -57,6 +57,9 @@ export default function ServiceGuide({
               {guide.packageLabel}
             </a>
           </p>
+          <p>
+            <a href="#service-packages">Compare relevant packages ↓</a>
+          </p>
         </aside>
         <div className="agency-prose">
           {guide.sections.map((section) => (
@@ -93,6 +96,28 @@ export default function ServiceGuide({
           </p>
         </div>
       </div>
+      <section
+        className="agency-section"
+        id="service-packages"
+        aria-labelledby="service-packages-title"
+      >
+        <div className="agency-section-head">
+          <p className="agency-kicker">Ways to work together</p>
+          <h2 id="service-packages-title">Choose your engagement.</h2>
+          <p>
+            {guide.slug === "ai-strategy"
+              ? "Explore an ongoing leadership mandate or a technical discovery for one opportunity. Organization-wide strategy needs its own agreed scope."
+              : "Start with discovery when the decision is unclear, a build when the brief is ready, or a partnership for a funded roadmap."}
+          </p>
+        </div>
+        <PackageGrid
+          slugs={
+            guide.slug === "ai-strategy"
+              ? ["leadership", "discovery"]
+              : ["discovery", "build", "partnership"]
+          }
+        />
+      </section>
       <AgencyCTA
         title={
           guide.slug === "ai-strategy"

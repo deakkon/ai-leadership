@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { fontVariables } from "./fonts";
 import { siteUrl, withBase } from "../lib/site";
 import Footer from "../components/Footer";
 import Masthead from "../components/Masthead";
@@ -8,7 +7,6 @@ import MotionConfigProvider from "../components/MotionConfigProvider";
 import SkipLink from "../components/SkipLink";
 import "./agency.css";
 
-import { themeBootScript } from "../lib/theme";
 import { organizationSchema, personSchema } from "../lib/schema";
 import { searchVerification } from "../lib/search-verification";
 
@@ -43,8 +41,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  /* Light SSR default; the boot script and applyTheme sync the meta to the
-     resolved theme (dark chrome = Forge charcoal). */
   themeColor: "#f7f9f7",
 };
 
@@ -52,9 +48,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning>
-      <body className={`theme-folio ${fontVariables}`}>
-        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+    <html lang="en" data-theme="light">
+      <body className="theme-folio">
         {[organizationSchema, personSchema].map((schema) => (
           <script
             key={schema["@type"]}

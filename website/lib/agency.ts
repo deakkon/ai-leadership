@@ -11,14 +11,14 @@ export const packages = [
   {
     slug: "discovery",
     name: "Discovery sprint",
-    category: "Find the right first move",
+    category: "Before committing to a build",
     price: "€4,500",
     unit: "fixed scope",
     timeline: "Up to 2 weeks",
     audience:
       "For teams with a business problem and several possible ways forward.",
     summary:
-      "A decision you can act on. Turn an ambiguous idea into a bounded brief, an architecture direction and a delivery plan.",
+      "Assess one workflow or product idea, compare the options and leave with a technical brief and delivery estimate.",
     outcome:
       "Know what to build, what to leave out, and what a first release should prove.",
     deliverables: [
@@ -38,14 +38,14 @@ export const packages = [
   {
     slug: "build",
     name: "Focused build",
-    category: "Put a useful release in people’s hands",
+    category: "One project, agreed scope",
     price: "From €18,000",
     unit: "per project",
     timeline: "Typically 4–6 weeks",
     audience:
       "For teams ready to ship a bounded software release or automate a specific workflow.",
     summary:
-      "One valuable release, with clear boundaries. An internal tool, a product feature or an AI workflow built around agreed acceptance tests.",
+      "Build an internal tool, a product feature or an AI workflow, with tests, deployment and handover agreed before work starts.",
     outcome: "A working release your team can test, operate and build on.",
     deliverables: [
       "One agreed workflow or product increment",
@@ -65,13 +65,13 @@ export const packages = [
   {
     slug: "partnership",
     name: "Delivery partnership",
-    category: "Keep a valuable roadmap moving",
+    category: "Ongoing engineering capacity",
     price: "From €24,000",
     unit: "per month",
     timeline: "Initial 3-month engagement",
     audience: "For teams with a funded roadmap and a named product owner.",
     summary:
-      "A monthly delivery cadence with senior technical ownership, a prioritized backlog and specialist support matched to the work.",
+      "Reserve engineering capacity for a funded roadmap, with agreed priorities, weekly reviews and Jurica leading technical decisions.",
     outcome:
       "Steady, reviewed progress with visible priorities, costs and release decisions.",
     deliverables: [
@@ -92,14 +92,14 @@ export const packages = [
   {
     slug: "leadership",
     name: "Fractional AI / CTO leadership",
-    category: "Give the decisions an owner",
+    category: "Ongoing AI and technology leadership",
     price: "From €7,500",
     unit: "per month",
     timeline: "Defined monthly mandate",
     audience:
       "For founders and leadership teams who need senior technical ownership without a full-time executive hire.",
     summary:
-      "A clear roadmap, architecture decisions and delivery governance. Work directly with Jurica on the decisions that determine whether the engineering investment pays off.",
+      "Work directly with Jurica on AI investment, roadmap, architecture and vendor decisions, with a defined monthly mandate.",
     outcome:
       "A technical direction tied to business priorities, with explicit ownership and decision cadence.",
     deliverables: [

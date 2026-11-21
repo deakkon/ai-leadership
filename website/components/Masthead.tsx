@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { identity, nav, withBase, basePath } from "../lib/site";
 import { Wordmark } from "./Agency";
-import ThemePicker from "./ThemePicker";
 
 function normalized(path: string) {
   const withoutBase =
@@ -68,7 +67,6 @@ export default function Masthead() {
       <nav className="agency-nav" aria-label="Primary navigation">
         {links()}
       </nav>
-      <ThemePicker />
       <a
         className="agency-button small"
         href={identity.bookingUrl}

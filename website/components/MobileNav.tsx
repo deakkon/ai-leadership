@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { identity, withBase } from "../lib/site";
-import ThemePicker from "./ThemePicker";
 
 const links = [
   { href: withBase("/#services"), label: "Services" },
@@ -33,7 +32,9 @@ export default function MobileNav() {
         return;
       }
       if (e.key === "Tab" && drawerRef.current) {
-        const els = Array.from(drawerRef.current.querySelectorAll<HTMLElement>(FOCUSABLE));
+        const els = Array.from(
+          drawerRef.current.querySelectorAll<HTMLElement>(FOCUSABLE),
+        );
         if (els.length === 0) return;
         const first = els[0];
         const last = els[els.length - 1];
@@ -68,11 +69,27 @@ export default function MobileNav() {
         onClick={() => setOpen((v) => !v)}
       >
         {open ? (
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            aria-hidden="true"
+          >
             <path d="M2 2l14 14M16 2L2 16" />
           </svg>
         ) : (
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            aria-hidden="true"
+          >
             <path d="M2 4h14M2 9h14M2 14h14" />
           </svg>
         )}
@@ -111,7 +128,15 @@ export default function MobileNav() {
                   aria-label="Close menu"
                   onClick={close}
                 >
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    aria-hidden="true"
+                  >
                     <path d="M2 2l14 14M16 2L2 16" />
                   </svg>
                 </button>
@@ -119,14 +144,15 @@ export default function MobileNav() {
               <nav className="drawer-links" aria-label="Primary navigation">
                 {links.map((link, i) => (
                   <a key={link.href} href={link.href} onClick={close}>
-                    <span className="micro">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="micro">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <span>{link.label}</span>
                   </a>
                 ))}
               </nav>
               <div className="drawer-theme">
                 <span className="micro">Theme</span>
-                <ThemePicker />
               </div>
               <a
                 className="btn btn-primary"
@@ -137,7 +163,14 @@ export default function MobileNav() {
               >
                 Book a call
               </a>
-              <p className="micro" style={{ marginTop: "auto", paddingTop: "var(--sp-6)", color: "var(--muted)" }}>
+              <p
+                className="micro"
+                style={{
+                  marginTop: "auto",
+                  paddingTop: "var(--sp-6)",
+                  color: "var(--muted)",
+                }}
+              >
                 {identity.location}
               </p>
             </motion.div>

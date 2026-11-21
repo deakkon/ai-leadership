@@ -16,14 +16,14 @@ export default function Home() {
             Founder-led engineering · Berlin / working globally
           </p>
           <h1>
-            Software built with AI.
+            AI strategy and software.
             <br />
-            <em>Led by a hooman.</em>
+            With a hands-on lead.
           </h1>
           <p className="agency-lead">
-            From the first hard decision to the release that matters. Senior
-            engineering judgment and AI agents, working together to build useful
-            software.
+            I help B2B teams decide where to invest in AI and build the software
+            they need. I lead the work directly, using AI tools and specialist
+            engineers where they help.
           </p>
           <div className="agency-actions horizontal">
             <a
@@ -35,7 +35,7 @@ export default function Home() {
               Talk about your project
             </a>
             <a className="agency-text-link" href={withBase("/services/")}>
-              Find your starting point
+              Explore services and packages
             </a>
           </div>
           <p className="agency-hero-note">
@@ -55,26 +55,21 @@ export default function Home() {
       <section className="agency-section" id="services">
         <div className="agency-section-head">
           <p className="agency-kicker">The work</p>
-          <h2>
-            Move the business forward.
-            <br />
-            <em>Build what earns its place.</em>
-          </h2>
+          <h2>What do you need to get done?</h2>
           <p>
-            You may need a product release, an automated workflow or a technical
-            direction. We start with the outcome and choose the right tools for
-            the job.
+            Choose a service to see where I can help, then explore the packages
+            for scope, pricing and examples.
           </p>
         </div>
         <div className="agency-service-rows">
           {[
             [
-              "Software that fits your business",
-              "Internal tools, customer-facing features and integrations. Bounded releases, reviewed code and a handover your team can use.",
+              "Software development",
+              "Internal tools, product features and integrations. I plan the release, lead implementation and hand it over to your team.",
               "software-development",
             ],
             [
-              "AI that does useful work",
+              "AI workflow automation",
               "Document workflows, retrieval, agent-assisted operations and automation. Evaluation, fallbacks and operating costs are part of the design.",
               "ai-workflow-automation",
             ],
@@ -96,40 +91,32 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <section className="agency-philosophy" id="experience">
-        <p className="agency-kicker">Why the hooman stays in the loop</p>
+      <section className="agency-philosophy agency-inverted" id="experience">
+        <p className="agency-kicker">Working with me</p>
         <div>
-          <h2>
-            Agents can write code.
-            <br />
-            <em>Someone has to own the decisions.</em>
-          </h2>
+          <h2>You work directly with me.</h2>
           <p>
-            Jurica leads architecture, scope and release review. Agents take on
-            well-defined implementation and testing tasks. Specialist humans
-            join where the work needs their expertise.
+            I’m Jurica. I handle planning, architecture and review. For larger
+            projects, I bring in specialist engineers. AI tools help with
+            implementation and testing; I’m responsible for what ships.
           </p>
           <p>
-            You get a named technical lead, visible progress and agreed
-            acceptance criteria. Your code, accounts and operating knowledge
-            stay with you.
+            Your team keeps the code, production accounts and documentation. We
+            agree what is included, how you’ll review the work and who handles
+            support before the project starts.
           </p>
           <a className="agency-text-link" href={withBase("/how-we-work/")}>
-            See how delivery works
+            My approach
           </a>
         </div>
       </section>
       <section className="agency-section" id="mandates">
         <div className="agency-section-head">
           <p className="agency-kicker">Ways to work together</p>
-          <h2>
-            A useful first step.
-            <br />
-            <em>A clear next one.</em>
-          </h2>
+          <h2>Choose a package.</h2>
           <p>
-            Start with a decision, commission a bounded release, or establish an
-            ongoing delivery cadence.
+            Start with discovery, commission a project, or reserve ongoing
+            engineering capacity. Each package explains what is included.
           </p>
         </div>
         <PackageGrid />
@@ -147,11 +134,7 @@ export default function Home() {
       <section className="agency-section agency-examples">
         <div className="agency-section-head">
           <p className="agency-kicker">Where this can help</p>
-          <h2>
-            Concrete work.
-            <br />
-            <em>Real business context.</em>
-          </h2>
+          <h2>Typical projects.</h2>
           <p>
             Illustrative engagements, not claims of completed agency projects.
           </p>
@@ -181,11 +164,7 @@ export default function Home() {
       <section className="agency-section" id="insights">
         <div className="agency-section-head">
           <p className="agency-kicker">Field notes</p>
-          <h2>
-            Thinking that informs
-            <br />
-            <em>the engineering.</em>
-          </h2>
+          <h2>Notes on AI and engineering.</h2>
           <a className="agency-text-link" href={withBase("/insights/")}>
             All insights
           </a>

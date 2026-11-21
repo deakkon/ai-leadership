@@ -1,39 +1,43 @@
 import { AgencyCTA, PageIntro, LoopDiagram } from "../../components/Agency";
 import { pageMetadata } from "../../lib/agency";
 export const metadata = pageMetadata(
-  "How human-led, agent-assisted delivery works",
-  "Human direction, bounded agent execution, review and evidence before release. Understand the delivery process and ownership.",
+  "My approach to AI strategy and software delivery",
+  "How Jurica plans, builds and reviews software, uses AI tools and specialists, and hands over the work to your team.",
   "/how-we-work/",
 );
 const steps = [
   [
     "Define the outcome",
-    "We agree what should change for the business, the release boundary, the client owner and the evidence needed to accept the work.",
+    "I work with you to agree the business goal, what is included, who makes decisions and how you will check the result.",
   ],
   [
-    "Design the boundaries",
-    "Jurica owns architecture and risk decisions. We agree data access, vendor use, spending limits, integration contracts and rollback before implementation.",
+    "Plan the implementation",
+    "I assess the architecture, data access, vendors, costs and risks. We agree the approach and what happens if an integration or release fails.",
   ],
   [
-    "Build in reviewed increments",
-    "Agents implement well-defined tasks in isolated environments. Human specialists handle work that needs domain expertise. Pull requests include tests and reviewable evidence.",
+    "Build and review",
+    "I break implementation into small tasks. AI tools assist with coding and testing; I review the changes. I bring in specialist engineers when the project needs additional expertise.",
   ],
   [
-    "Evaluate and release",
-    "We check acceptance cases, failure paths, model behavior where relevant, cost and operational readiness. A named human approves each release.",
+    "Test and release",
+    "I check the agreed scenarios, failure paths, integrations and costs before approving a release. For AI features, that includes evaluation against representative examples.",
   ],
   [
     "Hand over and improve",
-    "Your team receives the repository, deployment notes and operating instructions. Support responsibilities and the next increment are agreed explicitly.",
+    "Your team receives the code, deployment notes and operating instructions. We agree who handles support and whether more work is needed.",
   ],
 ];
 export default function How() {
   return (
     <main id="main" className="agency-main">
-      <PageIntro kicker="The operating model" title="Autonomy needs direction.">
+      <PageIntro
+        kicker="My approach"
+        title="I lead the work, from plan to release."
+      >
         <p>
-          AI agents extend the engineering workflow. Senior humans stay
-          responsible for scope, architecture and what reaches production.
+          You work with me on planning, architecture and review. I use AI tools
+          and specialist engineers where they help, and stay responsible for
+          delivery.
         </p>
       </PageIntro>
       <LoopDiagram />
@@ -50,11 +54,7 @@ export default function How() {
       <section className="agency-philosophy">
         <p className="agency-kicker">Built for ownership</p>
         <div>
-          <h2>
-            Your systems.
-            <br />
-            <em>Your ability to keep going.</em>
-          </h2>
+          <h2>Your team keeps the work.</h2>
           <p>
             Client-owned repositories and production accounts are the default.
             Permissions are scoped to the work. Sensitive data stays out of
@@ -62,8 +62,9 @@ export default function How() {
             before access.
           </p>
           <p>
-            We choose conventional software when it solves the problem well.
-            Agent use needs a reason, a budget, a failure path and an owner.
+            I recommend conventional software when it solves the problem well.
+            If a workflow uses AI, we agree its permissions, budget, review
+            points and owner.
           </p>
         </div>
       </section>

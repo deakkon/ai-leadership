@@ -33,7 +33,7 @@ export const hero = {
 
 export const nav = [
   { href: withBase("/services/"), label: "Services" },
-  { href: withBase("/how-we-work/"), label: "How we work" },
+  { href: withBase("/how-we-work/"), label: "My approach" },
   { href: withBase("/work/"), label: "Work" },
   { href: withBase("/founder/"), label: "Founder" },
   { href: withBase("/insights/"), label: "Insights" },
