@@ -130,6 +130,14 @@ export function LoopDiagram() {
           Build · test
         </text>
       </svg>
+      <div className="loop-mobile-legend" aria-hidden="true">
+        <span>
+          <strong>Human</strong>Direction · review
+        </span>
+        <span>
+          <strong>Agents</strong>Build · test
+        </span>
+      </div>
       <div className="loop-plate-bottom">
         <span>Architecture. Implementation. Evidence.</span>
         <strong>One accountable lead.</strong>

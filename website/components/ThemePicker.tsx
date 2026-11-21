@@ -1,45 +1,56 @@
 "use client";
-
 import { useEffect, useState } from "react";
-import { THEME_EVENT, THEME_LABELS, THEMES, applyTheme, getTheme, type Theme } from "../lib/theme";
-
-/**
- * Editorial theme picker — Newsprint / Forge. Two pressed-state buttons
- * (aria-pressed), mono micro register to match the system. State mirrors
- * html[data-theme]; it listens to the shared theme-change event so the
- * masthead and drawer instances stay in sync with the pre-paint boot script.
- */
+import {
+  getThemePreference,
+  applyThemePreference,
+  type ThemePreference,
+} from "../lib/theme";
 export default function ThemePicker() {
-  const [theme, setTheme] = useState<Theme>("light");
-
+  const [preference, setPreference] = useState<ThemePreference>("system");
   useEffect(() => {
-    setTheme(getTheme());
-    const onThemeChange = (e: Event) => {
-      setTheme((e as CustomEvent<Theme>).detail);
+    let current = getThemePreference();
+    setPreference(current);
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const followSystem = () => {
+      if (current === "system") applyThemePreference("system");
     };
-    window.addEventListener(THEME_EVENT, onThemeChange);
-    return () => window.removeEventListener(THEME_EVENT, onThemeChange);
+    const sync = () => {
+      current = getThemePreference();
+      setPreference(current);
+      applyThemePreference(current);
+    };
+    media.addEventListener("change", followSystem);
+    window.addEventListener("storage", sync);
+    // Keep the system listener aligned with explicit appearance choices.
+    const onPreference = (event: Event) => {
+      current = (event as CustomEvent<ThemePreference>).detail;
+    };
+    window.addEventListener("hitl:appearance", onPreference);
+    return () => {
+      media.removeEventListener("change", followSystem);
+      window.removeEventListener("storage", sync);
+      window.removeEventListener("hitl:appearance", onPreference);
+    };
   }, []);
-
-  const select = (value: Theme) => {
-    if (value !== getTheme()) applyTheme(value);
-  };
-
   return (
-    <div className="theme-picker" role="group" aria-label="Colour theme">
-      {THEMES.map((value) => (
-        <button
-          key={value}
-          type="button"
-          className={`theme-option${theme === value ? " is-active" : ""}`}
-          aria-pressed={theme === value}
-          aria-label={value === "light" ? "Switch to Newsprint theme" : "Switch to Forge theme"}
-          suppressHydrationWarning
-          onClick={() => select(value)}
-        >
-          {THEME_LABELS[value]}
-        </button>
-      ))}
-    </div>
+    <label className="agency-appearance">
+      <span className="visually-hidden">Appearance</span>
+      <select
+        aria-label="Appearance"
+        value={preference}
+        onChange={(event) => {
+          const value = event.target.value as ThemePreference;
+          setPreference(value);
+          applyThemePreference(value);
+          window.dispatchEvent(
+            new CustomEvent("hitl:appearance", { detail: value }),
+          );
+        }}
+      >
+        <option value="system">System</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </label>
   );
 }
