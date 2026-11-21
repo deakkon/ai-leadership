@@ -1,6 +1,11 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
+const intentRoutes = [
+  "software-development",
+  "ai-workflow-automation",
+  "ai-strategy",
+];
 const read = (path) =>
   readFileSync(new URL(`../out/${path}`, import.meta.url), "utf8");
 
@@ -57,6 +62,7 @@ test("exported local links and social image resolve to real files", () => {
     "services/discovery/",
     "services/leadership/",
     "services/partnership/",
+    ...intentRoutes.map((slug) => `services/${slug}/`),
     "contact/",
     "founder/",
     "how-we-work/",
@@ -82,6 +88,64 @@ test("exported local links and social image resolve to real files", () => {
     }
   }
   assert.ok(existsSync(new URL("../out/agency-og.png", import.meta.url)));
+});
+
+test("buyer-intent services are discoverable with distinct metadata and linked entities", () => {
+  const titles = new Set();
+  for (const slug of intentRoutes) {
+    const route = `/services/${slug}/`;
+    const html = read(`services/${slug}/index.html`);
+    const head = html.split("</head>")[0];
+    const title = head.match(/<title>(.*?)<\/title>/)?.[1];
+    assert.ok(title?.includes("Hooman in the Loop"), slug);
+    titles.add(title);
+    assert.ok(
+      html.includes(
+        `rel="canonical" href="https://deakkon.github.io/ai-leadership${route}"`,
+      ),
+      slug,
+    );
+    assert.equal((html.match(/<h1[ >]/g) || []).length, 1, slug);
+    assert.ok(
+      read("sitemap.xml").includes(
+        `https://deakkon.github.io/ai-leadership${route}`,
+      ),
+      slug,
+    );
+    assert.ok(
+      read("services/index.html").includes(`/ai-leadership${route}`),
+      slug,
+    );
+    const schemas = [
+      ...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g),
+    ].map((m) => JSON.parse(m[1]));
+    assert.ok(
+      schemas.some((s) => s["@type"] === "BreadcrumbList"),
+      slug,
+    );
+    assert.ok(
+      schemas.some(
+        (s) =>
+          s["@type"] === "Service" &&
+          s.provider?.["@id"] ===
+            "https://deakkon.github.io/ai-leadership/#agency",
+      ),
+      slug,
+    );
+    assert.ok(
+      schemas.some(
+        (s) =>
+          s["@type"] === "Organization" &&
+          s["@id"] === "https://deakkon.github.io/ai-leadership/#agency",
+      ),
+      slug,
+    );
+  }
+  assert.equal(titles.size, intentRoutes.length);
+  assert.match(
+    read("index.html").split("</head>")[0],
+    /<title>[^<]*Hooman in the Loop/,
+  );
 });
 
 test("navigation identifies the current page and parent section", () => {

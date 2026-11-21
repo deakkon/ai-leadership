@@ -12,20 +12,31 @@ export function Wordmark() {
     </span>
   );
 }
-export function AgencyCTA() {
+export function AgencyCTA({
+  title,
+  description,
+}: { title?: ReactNode; description?: ReactNode } = {}) {
   return (
     <section className="agency-cta" id="contact">
       <div>
         <p className="agency-kicker">Start with the problem</p>
         <h2>
-          What should your software
-          <br />
-          make possible?
+          {title ?? (
+            <>
+              What should your software
+              <br />
+              make possible?
+            </>
+          )}
         </h2>
         <p>
-          Bring a workflow, a stalled prototype or a product decision.
-          <br />
-          We’ll work out whether there’s a useful next step together.
+          {description ?? (
+            <>
+              Bring a workflow, a stalled prototype or a product decision.
+              <br />
+              We’ll work out whether there’s a useful next step together.
+            </>
+          )}
         </p>
       </div>
       <div className="agency-actions">

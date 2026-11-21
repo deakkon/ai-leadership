@@ -1,4 +1,16 @@
 import { identity, siteUrl } from "./site";
+import { brand } from "./agency";
+
+export const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${siteUrl}/#agency`,
+  name: brand.name,
+  url: `${siteUrl}/`,
+  description: brand.description,
+  founder: { "@id": `${siteUrl}/founder/#person` },
+  location: { "@type": "Place", name: "Berlin, Germany" },
+};
 
 export const personSchema = {
   "@context": "https://schema.org",

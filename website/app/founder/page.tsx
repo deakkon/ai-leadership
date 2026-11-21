@@ -1,7 +1,6 @@
 import { AgencyCTA, PageIntro } from "../../components/Agency";
 import { pageMetadata } from "../../lib/agency";
 import { identity, withBase } from "../../lib/site";
-import { personSchema } from "../../lib/schema";
 export const metadata = pageMetadata(
   "Dr. Jurica Ševa — founder & engineering lead",
   "Meet Jurica: former VP of AI & Data Science, PhD, and hands-on technical leader bridging AI strategy and production engineering.",
@@ -10,10 +9,6 @@ export const metadata = pageMetadata(
 export default function Founder() {
   return (
     <main id="main" className="agency-main">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
       <PageIntro kicker="The hooman in the loop" title="Dr. Jurica Ševa.">
         <p>
           Founder. AI and engineering leader. The person accountable for the

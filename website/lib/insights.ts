@@ -21,8 +21,10 @@ export type Insight = {
 export const insights: Insight[] = [
   {
     slug: "agentic-ai-reliability",
-    title: "Agentic AI reliability: what changes when software can choose its own path?",
-    oneLine: "A production framework for evaluation, observability and bounded autonomy.",
+    title:
+      "Agentic AI reliability: what changes when software can choose its own path?",
+    oneLine:
+      "A production framework for evaluation, observability and bounded autonomy.",
     desc: "A practical production framework for evaluating and operating agentic AI systems.",
     tags: ["LLM reliability", "Agentic AI"],
     theme: "architecture",
@@ -30,17 +32,24 @@ export const insights: Insight[] = [
     dateModified: "2026-08-19",
     readingTime: "4 min",
     related: [
-      { slug: "ai-platform-strategy", title: "AI platform strategy: what belongs in the platform?" },
-      { slug: "from-ai-poc-to-production", title: "From AI PoC to production: the six gaps that kill good demos" },
+      {
+        slug: "ai-platform-strategy",
+        title: "AI platform strategy: what belongs in the platform?",
+      },
+      {
+        slug: "from-ai-poc-to-production",
+        title: "From AI PoC to production: the six gaps that kill good demos",
+      },
     ],
-    serviceHref: withBase("/#services"),
-    serviceLabel: "GenAI & Agentic Systems",
+    serviceHref: withBase("/services/ai-workflow-automation/"),
+    serviceLabel: "AI workflow automation",
     offerLabel: "Fractional AI / CTO leadership",
   },
   {
     slug: "ai-platform-strategy",
     title: "AI platform strategy: what belongs in the platform?",
-    oneLine: "Separate reusable capabilities from product-specific intelligence before centralization becomes a bottleneck.",
+    oneLine:
+      "Separate reusable capabilities from product-specific intelligence before centralization becomes a bottleneck.",
     desc: "A practical framework for deciding what belongs in an enterprise AI platform.",
     tags: ["AI platform strategy", "AI architecture"],
     theme: "architecture",
@@ -48,17 +57,25 @@ export const insights: Insight[] = [
     dateModified: "2026-08-19",
     readingTime: "4 min",
     related: [
-      { slug: "agentic-ai-reliability", title: "Agentic AI reliability: what changes when software can choose its own path?" },
-      { slug: "from-ai-poc-to-production", title: "From AI PoC to production: the six gaps that kill good demos" },
+      {
+        slug: "agentic-ai-reliability",
+        title:
+          "Agentic AI reliability: what changes when software can choose its own path?",
+      },
+      {
+        slug: "from-ai-poc-to-production",
+        title: "From AI PoC to production: the six gaps that kill good demos",
+      },
     ],
-    serviceHref: withBase("/#services"),
-    serviceLabel: "AI Platform Strategy",
+    serviceHref: withBase("/services/ai-strategy/"),
+    serviceLabel: "AI strategy for leadership teams",
     offerLabel: "Discovery sprint",
   },
   {
     slug: "from-ai-poc-to-production",
     title: "From AI PoC to production: the six gaps that kill good demos",
-    oneLine: "Why quality, ownership, evaluation, integration, cost and operations must be designed together.",
+    oneLine:
+      "Why quality, ownership, evaluation, integration, cost and operations must be designed together.",
     desc: "Six gaps that prevent promising AI prototypes from becoming dependable production systems.",
     tags: ["AI transformation", "AI engineering"],
     theme: "transformation",
@@ -66,11 +83,18 @@ export const insights: Insight[] = [
     dateModified: "2026-08-19",
     readingTime: "4 min",
     related: [
-      { slug: "agentic-ai-reliability", title: "Agentic AI reliability: what changes when software can choose its own path?" },
-      { slug: "ai-platform-strategy", title: "AI platform strategy: what belongs in the platform?" },
+      {
+        slug: "agentic-ai-reliability",
+        title:
+          "Agentic AI reliability: what changes when software can choose its own path?",
+      },
+      {
+        slug: "ai-platform-strategy",
+        title: "AI platform strategy: what belongs in the platform?",
+      },
     ],
-    serviceHref: withBase("/#services"),
-    serviceLabel: "PoC-to-Production Recovery",
+    serviceHref: withBase("/services/software-development/"),
+    serviceLabel: "Software delivery",
     offerLabel: "Delivery partnership",
   },
 ];
@@ -126,24 +150,32 @@ export function articleSchema(insight: Insight) {
     image: `${siteUrl}/agency-og.png`,
     author: {
       "@type": "Person",
+      "@id": `${siteUrl}/founder/#person`,
       name: identity.name,
-      url: identity.linkedinUrl,
+      url: `${siteUrl}/founder/`,
       sameAs: [identity.linkedinUrl],
-      alumniOf: { "@type": "CollegeOrUniversity", name: "University of Zagreb" },
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: "University of Zagreb",
+      },
       hasCredential: {
         "@type": "EducationalOccupationalCredential",
         name: "Doctorate (PhD)",
         credentialCategory: "degree",
         educationalLevel: "Doctoral",
-        recognizedBy: { "@type": "CollegeOrUniversity", name: "University of Zagreb" },
+        recognizedBy: {
+          "@type": "CollegeOrUniversity",
+          name: "University of Zagreb",
+        },
         description:
           "Thesis: web news portal content personalization using information extraction techniques and weighted Voronoi diagrams.",
       },
     },
     publisher: {
       "@type": "Person",
+      "@id": `${siteUrl}/founder/#person`,
       name: identity.name,
-      url: identity.linkedinUrl,
+      url: `${siteUrl}/founder/`,
     },
   };
 }
@@ -155,7 +187,12 @@ export function breadcrumbSchema(insight: Insight) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
-      { "@type": "ListItem", position: 2, name: "Insights", item: `${siteUrl}/insights` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Insights",
+        item: `${siteUrl}/insights`,
+      },
       { "@type": "ListItem", position: 3, name: insight.title, item: url },
     ],
   };

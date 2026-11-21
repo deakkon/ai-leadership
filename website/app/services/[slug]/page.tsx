@@ -2,8 +2,10 @@ import { notFound } from "next/navigation";
 import { AgencyCTA, PageIntro } from "../../../components/Agency";
 import { packages, pageMetadata } from "../../../lib/agency";
 import { siteUrl, withBase } from "../../../lib/site";
+import { serviceGuides } from "../../../lib/service-guides";
+import ServiceGuide from "../../../components/ServiceGuide";
 export function generateStaticParams() {
-  return packages.map((p) => ({ slug: p.slug }));
+  return [...packages, ...serviceGuides].map((p) => ({ slug: p.slug }));
 }
 export async function generateMetadata({
   params,
@@ -11,6 +13,9 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const guide = serviceGuides.find((guide) => guide.slug === slug);
+  if (guide)
+    return pageMetadata(guide.title, guide.description, `/services/${slug}/`);
   const p = packages.find((p) => p.slug === slug);
   return p ? pageMetadata(p.name, p.summary, `/services/${slug}/`) : {};
 }
@@ -20,6 +25,8 @@ export default async function Service({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const guide = serviceGuides.find((guide) => guide.slug === slug);
+  if (guide) return <ServiceGuide guide={guide} />;
   const p = packages.find((p) => p.slug === slug);
   if (!p) notFound();
   return (

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteUrl } from "./site-config";
+import { serviceGuides } from "./service-guides";
 export const brand = {
   name: "Hooman in the Loop",
   short: "HITL",
@@ -126,6 +127,7 @@ export const agencyPaths = [
   "/contact/",
   "/insights/",
   ...packages.map((p) => `/services/${p.slug}/`),
+  ...serviceGuides.map((guide) => `/services/${guide.slug}/`),
 ];
 export function pageMetadata(
   title: string,
@@ -134,7 +136,7 @@ export function pageMetadata(
 ): Metadata {
   const url = `${siteUrl}${path}`;
   return {
-    title,
+    title: path === "/" ? { absolute: `${title} | ${brand.name}` } : title,
     description,
     alternates: { canonical: url },
     openGraph: {

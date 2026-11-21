@@ -6,6 +6,8 @@ website/node_modules/
 website/.next/
 website/out/
 website/*.tsbuildinfo
+website/.env.local
+website/.env.*.local
 
 # Python (sales-engine)
 sales-engine/.venv/

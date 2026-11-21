@@ -1,7 +1,6 @@
 import { AgencyCTA, LoopDiagram, PackageGrid } from "../components/Agency";
 import { pageMetadata, brand } from "../lib/agency";
-import { identity, siteUrl, withBase } from "../lib/site";
-import { personSchema } from "../lib/schema";
+import { identity, withBase } from "../lib/site";
 import { insights } from "../lib/insights";
 export const metadata = pageMetadata(
   "AI-first software agency in Berlin",
@@ -11,25 +10,6 @@ export const metadata = pageMetadata(
 export default function Home() {
   return (
     <main id="main" className="agency-main">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "@id": `${siteUrl}/#agency`,
-            name: brand.name,
-            url: `${siteUrl}/`,
-            description: brand.description,
-            founder: { "@id": `${siteUrl}/founder/#person` },
-            location: { "@type": "Place", name: "Berlin, Germany" },
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
       <section className="agency-hero">
         <div className="agency-hero-copy">
           <p className="agency-kicker">
@@ -91,17 +71,17 @@ export default function Home() {
             [
               "Software that fits your business",
               "Internal tools, customer-facing features and integrations. Bounded releases, reviewed code and a handover your team can use.",
-              "build",
+              "software-development",
             ],
             [
               "AI that does useful work",
               "Document workflows, retrieval, agent-assisted operations and automation. Evaluation, fallbacks and operating costs are part of the design.",
-              "build",
+              "ai-workflow-automation",
             ],
             [
-              "Leadership that connects the pieces",
-              "A fractional AI or CTO mandate to align priorities, architecture, vendors and delivery. Implementation can be scoped alongside it.",
-              "leadership",
+              "AI strategy for leadership teams",
+              "Decide where AI belongs, what to prioritize and how to measure progress. Align investment, ownership and adoption before committing to a build.",
+              "ai-strategy",
             ],
           ].map(([title, text, slug]) => (
             <a

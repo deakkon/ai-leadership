@@ -9,9 +9,15 @@ import SkipLink from "../components/SkipLink";
 import "./agency.css";
 
 import { themeBootScript } from "../lib/theme";
+import { organizationSchema, personSchema } from "../lib/schema";
+import { searchVerification } from "../lib/search-verification";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl + "/"),
+  verification: searchVerification(
+    process.env.GOOGLE_SITE_VERIFICATION,
+    process.env.BING_SITE_VERIFICATION,
+  ),
   title: {
     default: "Hooman in the Loop | AI-first software agency, Berlin",
     template: "%s | Hooman in the Loop",
@@ -49,6 +55,13 @@ export default function RootLayout({
     <html lang="en" data-theme="light" suppressHydrationWarning>
       <body className={`theme-folio ${fontVariables}`}>
         <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+        {[organizationSchema, personSchema].map((schema) => (
+          <script
+            key={schema["@type"]}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        ))}
         <MotionConfigProvider>
           <SkipLink />
           <Masthead />

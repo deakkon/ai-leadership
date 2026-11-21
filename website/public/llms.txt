@@ -16,5 +16,12 @@ Contact: https://deakkon.github.io/ai-leadership/contact/
 - Fractional AI / CTO leadership: from €7,500/month, defined mandate and capacity.
 Prices exclude VAT where applicable. Final scope and fees are agreed in writing. Production hosting and model usage are separate.
 
+## Service guides
+- AI strategy for leadership teams: https://deakkon.github.io/ai-leadership/services/ai-strategy/
+- Custom software development: https://deakkon.github.io/ai-leadership/services/software-development/
+- AI workflow automation: https://deakkon.github.io/ai-leadership/services/ai-workflow-automation/
+
+Strategy work is scoped to the organization and mandate. A single-workflow discovery sprint is not an organization-wide AI strategy.
+
 ## Attribution
 Founder career experience is not agency client work. Work-page briefs are illustrative. No agency certifications, guaranteed ROI, autonomous staffing equivalents or client results are claimed.
