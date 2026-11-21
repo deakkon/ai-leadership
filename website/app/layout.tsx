@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { siteUrl, withBase } from "../lib/site";
-import Footer from "../components/Footer";
-import Masthead from "../components/Masthead";
+import SiteFrame from "../components/SiteFrame";
 import MotionConfigProvider from "../components/MotionConfigProvider";
 import SkipLink from "../components/SkipLink";
 import "./agency.css";
@@ -59,9 +58,7 @@ export default function RootLayout({
         ))}
         <MotionConfigProvider>
           <SkipLink />
-          <Masthead />
-          {children}
-          <Footer />
+          <SiteFrame>{children}</SiteFrame>
         </MotionConfigProvider>
       </body>
     </html>

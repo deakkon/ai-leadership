@@ -246,3 +246,45 @@ test("founder experience describes domains, roles and real project contributions
   assert.ok(founder.includes("Employer and client names are omitted"));
   assert.ok(founder.includes("past employment and advisory roles"));
 });
+
+test("v2 is a separate unindexed design preview with complete package routes", () => {
+  const home = read("v2/index.html");
+  assert.ok(home.includes('class="v2-site"'));
+  assert.ok(home.includes('aria-label="V2 navigation"'));
+  assert.ok(!home.includes('class="agency-header"'));
+  assert.ok(!home.includes('class="agency-footer"'));
+  assert.ok(home.includes("data-v2-package-picker"));
+  assert.ok(home.includes('id="v2-services"'));
+  for (const path of [
+    "v2/",
+    "v2/services/",
+    "v2/founder/",
+    ...["discovery", "build", "leadership", "partnership"].map(
+      (s) => `v2/services/${s}/`,
+    ),
+  ]) {
+    const html = read(`${path}index.html`);
+    assert.ok(html.includes("noindex"), path);
+    assert.ok(
+      html.includes(
+        `rel="canonical" href="https://deakkon.github.io/ai-leadership/${path}"`,
+      ),
+      path,
+    );
+    assert.equal((html.match(/<h1[ >]/g) || []).length, 1, path);
+    for (const m of html.matchAll(/href="(\/ai-leadership\/[^"#?]*)/g)) {
+      const route = m[1].slice("/ai-leadership/".length);
+      assert.ok(
+        existsSync(
+          new URL(
+            `../out/${route}${route.endsWith("/") ? "index.html" : ""}`,
+            import.meta.url,
+          ),
+        ),
+        `${path}: ${route}`,
+      );
+    }
+  }
+  assert.ok(!read("sitemap.xml").includes("/v2/"));
+  assert.ok(read("index.html").includes('class="agency-header"'));
+});
