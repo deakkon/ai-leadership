@@ -1,18 +1,13 @@
-# V2 design preview
+# Released site design
 
-The alternative design lives at `/ai-leadership/v2/`, with its own service index, four package pages and founder page. The current design stays at the existing routes. Preview pages use self-referencing canonical URLs and noindex, follow; they are excluded from the production sitemap while the designs are being compared.
+The V2 design is now the default at `/ai-leadership/`, with canonical services, package pages and founder experience at their original URLs. The previous homepage and navigation have been retired. Supporting service guides, insights, contact and legal content retain their existing URLs under the shared navigation and design palette.
 
-## Design direction
+Former `/v2/` preview URLs are static HTML redirects to the corresponding canonical routes, with noindex/follow and canonical metadata. Only canonical routes appear in the sitemap. GitHub Pages does not support application-level HTTP redirects; the aliases use immediate meta refresh and a visible fallback link.
 
-- A light editorial canvas, one system font family, forest-green text and a restrained lime accent.
-- A decision workbench that explains three starting situations, instead of repeating the infinity diagram.
-- A package selector connecting price, scope and a relevant engagement diagram, with dedicated pages for the full details and use cases.
-- A contrasting delivery section with selectable stages and explicit outputs.
-- A personal founder section, with the existing employer-free career summaries available on the V2 founder page.
-- Native links, keyboard-accessible buttons, a mobile navigation disclosure and reduced-motion handling. Initial browser markup matches static HTML; animation starts after hydration.
+The homepage presents services, documented career projects, approach, founder background and an approved LinkedIn recommendation before package pricing. Recommendation wording and attribution reuse the existing source; no new employer association or testimonial metrics were inferred. Publication was explicitly approved by the user on 22 November 2026.
 
-## References
+The three-scenario workbench advances every three seconds. Pointer hover, keyboard focus and hidden tabs pause rotation; a manual selection stops it until restarted. Reduced-motion preference disables automatic rotation. Automatic changes do not modify the package selection or produce live-region announcements. Timers and visibility listeners are cleaned up on unmount.
 
-[Motion examples](https://motion.dev/examples) informed keyed transitions and shared selection indicators. [Aceternity's public component catalogue](https://ui.aceternity.com/ai-recommendations), [Magic UI](https://magicui.design/) and [21st](https://21st.dev/) informed the interaction and layout direction. The implementation is original React/CSS using the installed Motion library; no paid templates, licensed assets, additional UI packages or account-only design services were imported. No Refero integration was used.
+The visual direction uses a light editorial canvas, one system font, forest-green text, lime accents and distinct engagement diagrams. Decorative package and founder eyebrows were removed. The hero states the founder’s experience in the main introduction rather than a separate proof strip. Pricing, scopes and exclusions are unchanged.
 
-V2 shares the offer catalogue, package stories, engagement diagrams and founder evidence with the existing site. Preview styling is scoped under `.v2-site`; the root frame selects the appropriate navigation and footer by route. No pricing or employer attribution changes are introduced by this preview.
+Public references: [Motion](https://motion.dev/examples), [Aceternity](https://ui.aceternity.com/ai-recommendations), [Magic UI](https://magicui.design/) and [21st](https://21st.dev/). Original React/CSS uses the installed Motion library; no paid templates or additional UI packages were imported.

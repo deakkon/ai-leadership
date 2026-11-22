@@ -25,7 +25,7 @@ test("agency, founder, services and lead qualification are exported", () => {
     assert.ok(existsSync(new URL(`../out/${path}`, import.meta.url)), path);
   }
   assert.match(read("index.html"), /Hooman in the Loop/);
-  assert.match(read("index.html"), /AI strategy and software/);
+  assert.match(read("index.html"), /Clear AI decisions/);
   assert.match(read("services/index.html"), /€4,500/);
 });
 
@@ -157,7 +157,10 @@ test("navigation identifies the current page and parent section", () => {
     read("services/build/index.html"),
     /aria-current="location"[^>]*>Services</,
   );
-  assert.match(read("founder/index.html"), /aria-current="page"[^>]*>Founder</);
+  assert.match(
+    read("founder/index.html"),
+    /aria-current="page"[^>]*>About Jurica</,
+  );
 });
 
 test("form feedback has accessible names and associations", () => {
@@ -179,7 +182,7 @@ test("site uses fixed light appearance, personal navigation and a contrasting ho
     assert.match(html, />My approach</);
     assert.doesNotMatch(html, />How we work</);
   }
-  assert.match(read("index.html"), /agency-inverted/);
+  assert.match(read("index.html"), /v2-process/);
 });
 
 test("package cards link as a whole and every package exports a complete guided deep dive", () => {
@@ -188,10 +191,10 @@ test("package cards link as a whole and every package exports a complete guided 
     const card = [...services.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)].find(
       (match) =>
         match[1].includes(`href="/ai-leadership/services/${slug}/"`) &&
-        match[1].includes('class="agency-package"'),
+        match[1].includes('class="v2-service-offer"'),
     );
     assert.ok(card, `Whole-card link for ${slug}`);
-    assert.match(card[2], /agency-price/);
+    assert.match(card[2], /v2-offer-price/);
     const html = read(`services/${slug}/index.html`);
     for (const id of ["scope", "journey", "examples", "investment"]) {
       assert.ok(html.includes(`id="explore-${id}"`), `${slug}: ${id}`);
@@ -202,7 +205,7 @@ test("package cards link as a whole and every package exports a complete guided 
       3,
       slug,
     );
-    assert.ok(html.includes('href="/ai-leadership/services/#packages"'));
+    assert.ok(html.includes('href="/ai-leadership/#v2-packages"'));
     assert.match(html, /data-package-explorer/);
   }
 });
@@ -247,44 +250,49 @@ test("founder experience describes domains, roles and real project contributions
   assert.ok(founder.includes("past employment and advisory roles"));
 });
 
-test("v2 is a separate unindexed design preview with complete package routes", () => {
-  const home = read("v2/index.html");
-  assert.ok(home.includes('class="v2-site"'));
-  assert.ok(home.includes('aria-label="V2 navigation"'));
+test("the new design is the indexed default and preview routes point to canonical pages", () => {
+  const home = read("index.html");
+  assert.ok(home.includes('class="v2-site"'), "New design is the homepage");
   assert.ok(!home.includes('class="agency-header"'));
-  assert.ok(!home.includes('class="agency-footer"'));
-  assert.ok(home.includes("data-v2-package-picker"));
-  assert.ok(home.includes('id="v2-services"'));
-  for (const path of [
-    "v2/",
-    "v2/services/",
-    "v2/founder/",
+  assert.ok(!home.includes('class="v2-preview"'));
+  assert.ok(!home.includes("noindex"));
+  assert.ok(home.includes("former VP of AI"));
+  assert.ok(!home.includes('class="v2-hero-proof"'));
+  assert.ok(home.includes("I lead the decisions."));
+  assert.ok(home.includes("Michael Lindqvist"));
+  assert.ok(
+    home.indexOf('class="v2-section v2-recommendation"') <
+      home.indexOf('id="v2-packages"'),
+  );
+  assert.ok(home.includes("Pause automatic rotation"));
+  assert.ok(!home.includes("The engagement, mapped out"));
+  assert.ok(!home.includes("Your technical lead"));
+  assert.ok(
+    home.indexOf('id="v2-experience"') < home.indexOf('id="v2-packages"'),
+  );
+  assert.ok(home.indexOf('id="v2-founder"') < home.indexOf('id="v2-packages"'));
+  assert.ok(home.indexOf('id="v2-process"') < home.indexOf('id="v2-packages"'));
+  for (const route of [
+    "",
+    "services/",
+    "founder/",
     ...["discovery", "build", "leadership", "partnership"].map(
-      (s) => `v2/services/${s}/`,
+      (s) => `services/${s}/`,
     ),
   ]) {
-    const html = read(`${path}index.html`);
-    assert.ok(html.includes("noindex"), path);
+    const html = read(`${route}index.html`);
+    assert.ok(html.includes('class="v2-site"'), route);
+    assert.ok(!html.includes("noindex"), route);
+    assert.ok(!/href="[^"]*\/v2\//.test(html), route);
+    const alias = read(`v2/${route}index.html`);
+    assert.ok(alias.includes('http-equiv="refresh"'), route);
     assert.ok(
-      html.includes(
-        `rel="canonical" href="https://deakkon.github.io/ai-leadership/${path}"`,
+      alias.includes(
+        `rel="canonical" href="https://deakkon.github.io/ai-leadership/${route}"`,
       ),
-      path,
+      route,
     );
-    assert.equal((html.match(/<h1[ >]/g) || []).length, 1, path);
-    for (const m of html.matchAll(/href="(\/ai-leadership\/[^"#?]*)/g)) {
-      const route = m[1].slice("/ai-leadership/".length);
-      assert.ok(
-        existsSync(
-          new URL(
-            `../out/${route}${route.endsWith("/") ? "index.html" : ""}`,
-            import.meta.url,
-          ),
-        ),
-        `${path}: ${route}`,
-      );
-    }
+    assert.ok(alias.includes("noindex"), route);
   }
   assert.ok(!read("sitemap.xml").includes("/v2/"));
-  assert.ok(read("index.html").includes('class="agency-header"'));
 });

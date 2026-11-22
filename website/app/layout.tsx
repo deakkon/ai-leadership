@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { siteUrl, withBase } from "../lib/site";
-import SiteFrame from "../components/SiteFrame";
+import SiteShell from "../components/SiteShell";
+import "./design.css";
 import MotionConfigProvider from "../components/MotionConfigProvider";
 import SkipLink from "../components/SkipLink";
 import "./agency.css";
@@ -58,7 +59,7 @@ export default function RootLayout({
         ))}
         <MotionConfigProvider>
           <SkipLink />
-          <SiteFrame>{children}</SiteFrame>
+          <SiteShell>{children}</SiteShell>
         </MotionConfigProvider>
       </body>
     </html>

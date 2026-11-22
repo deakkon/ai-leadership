@@ -1,165 +1,94 @@
-import { AgencyCTA, PageIntro } from "../../components/Agency";
-import { pageMetadata } from "../../lib/agency";
-import { identity, withBase } from "../../lib/site";
 import { founderExperience } from "../../lib/founder";
-
+import { pageMetadata } from "../../lib/agency";
+import { identity } from "../../lib/site";
+import { withBase } from "../../lib/site-config";
 export const metadata = pageMetadata(
-  "Dr. Jurica Ševa — AI leadership & engineering background",
-  "Jurica's background across healthcare AI, clinical NLP, speech recognition, document intelligence, GenAI product engineering and AI team leadership.",
+  "Jurica — background & experience",
+  "Domains, leadership roles and project contributions across healthcare AI, language systems, speech, document intelligence and GenAI engineering.",
   "/founder/",
 );
-
 export default function Founder() {
   return (
-    <main id="main" className="agency-main">
-      <PageIntro kicker="Founder & engineering lead" title="Dr. Jurica Ševa.">
+    <main id="main" className="v2-main v2-detail">
+      <header className="v2-page-heading">
+        <h1>
+          Jurica Ševa.
+          <br />
+          Researcher. Engineer. Leader.
+        </h1>
         <p>
-          I help teams make AI decisions and build the systems behind them. My
-          background spans research, hands-on engineering, department leadership
-          and executive responsibility.
+          More than ten years across applied AI and software. From building
+          language systems to leading teams and owning platform roadmaps.
         </p>
-      </PageIntro>
-
-      <div className="founder-overview">
-        <aside
-          className="founder-profile-card"
-          aria-label="Background at a glance"
-        >
-          <div className="founder-initials" aria-hidden="true">
-            JŠ
-          </div>
-          <dl>
-            <div>
-              <dt>Experience</dt>
-              <dd>10+ years in applied AI and software</dd>
-            </div>
-            <div>
-              <dt>Leadership</dt>
-              <dd>Former VP of AI & Data Science</dd>
-            </div>
-            <div>
-              <dt>Research</dt>
-              <dd>PhD · Information and Communication Sciences</dd>
-            </div>
-            <div>
-              <dt>Based in</dt>
-              <dd>Berlin · Working internationally</dd>
-            </div>
-          </dl>
-        </aside>
-        <div className="agency-prose">
-          <h2>From building models to leading teams.</h2>
+      </header>
+      <div className="v2-founder-intro">
+        <span className="v2-founder-monogram" aria-hidden="true">
+          JŠ
+        </span>
+        <div>
+          <h2>Direct access to the person leading the work.</h2>
           <p>
-            I’ve worked on clinical language systems, speech recognition,
-            search, knowledge graphs and GenAI products. My roles have ranged
-            from writing extraction pipelines and taking prototypes toward
-            deployment to owning an AI platform roadmap and leading a
-            cross-timezone team.
+            I work with you on priorities, architecture and delivery. My
+            experience spans research, hands-on engineering, department
+            leadership and executive responsibility.
           </p>
           <p>
-            Healthcare is a substantial part of that background. It has shaped
-            how I approach data, evaluation, integration and operational
-            responsibility. My experience also includes market research, digital
-            product delivery and advising leaders on AI strategy and hiring.
+            Selected experience below comes from past employment and advisory
+            roles. Employer and client names are omitted; these are personal
+            career credentials, separate from agency engagements.
           </p>
-          <p>
-            Today, I bring that mix to Hooman in the Loop. I work directly with
-            you on the decisions and implementation, bringing in specialist
-            engineers when the scope calls for it.
-          </p>
-          <a className="agency-text-link" href="#career-experience">
-            Explore my experience ↓
-          </a>
         </div>
       </div>
-
       <section
-        className="agency-section"
         id="career-experience"
-        aria-labelledby="career-experience-title"
+        aria-labelledby="v2-background-title"
+        className="v2-section"
       >
-        <div className="agency-section-head">
-          <p className="agency-kicker">Domains, roles & projects</p>
-          <h2 id="career-experience-title">
-            Work I’ve led, built and advised on.
-          </h2>
-          <p>
-            Selected experience from past employment and advisory roles.
-            Employer and client names are omitted; these are personal career
-            credentials, separate from agency engagements.
-          </p>
-        </div>
+        <p className="v2-eyebrow">Domains, roles & projects</p>
+        <h2 id="v2-background-title">The experience behind the advice.</h2>
         <div className="founder-experience-grid">
-          {founderExperience.map((experience, index) => (
-            <article
-              className="founder-experience-card"
-              key={experience.domain}
-            >
-              <span className="founder-experience-index" aria-hidden="true">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3>{experience.domain}</h3>
-              <p className="founder-role">{experience.role}</p>
-              <p>{experience.work}</p>
+          {founderExperience.map((item, i) => (
+            <article className="founder-experience-card" key={item.domain}>
+              <span className="founder-experience-index">0{i + 1}</span>
+              <h3>{item.domain}</h3>
+              <p className="founder-role">{item.role}</p>
+              <p>{item.work}</p>
               <dl>
                 <dt>My contribution</dt>
-                <dd>{experience.contribution}</dd>
+                <dd>{item.contribution}</dd>
                 <dt>What I bring to your project</dt>
-                <dd>{experience.connection}</dd>
+                <dd>{item.connection}</dd>
               </dl>
             </article>
           ))}
         </div>
       </section>
-
-      <section
-        className="agency-section founder-foundations"
-        aria-labelledby="foundations-title"
-      >
-        <div>
-          <p className="agency-kicker">Research & education</p>
-          <h2 id="foundations-title">A technical foundation.</h2>
-        </div>
-        <div className="agency-prose">
-          <p>
-            I hold a PhD in Information and Communication Sciences and an MSc in
-            Computer Science. I was also a Fulbright Visiting Scholar in
-            Computer Science.
-          </p>
-          <p>
-            My academic work has covered semantic search, multilingual text
-            mining and domain-specific knowledge extraction. Those subjects
-            still inform how I think about retrieval, language systems and the
-            quality of the evidence behind an answer.
-          </p>
-          <p>I work in English, German and Croatian.</p>
+      <section className="v2-founder-education">
+        <p className="v2-eyebrow">Research & education</p>
+        <h2>A technical foundation.</h2>
+        <p>
+          PhD in Information and Communication Sciences. MSc in Computer
+          Science. Fulbright Visiting Scholar in Computer Science.
+        </p>
+        <p>
+          Research across semantic search, multilingual text mining and
+          domain-specific knowledge extraction. Working in English, German and
+          Croatian.
+        </p>
+        <div className="v2-actions">
+          <a className="v2-button" href={withBase("/services/")}>
+            Explore the engagements ↗
+          </a>
           <a
-            className="agency-text-link"
+            className="v2-link"
             href={identity.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Professional background on LinkedIn
+            LinkedIn ↗
           </a>
         </div>
       </section>
-
-      <section className="agency-section agency-prose">
-        <h2>How that experience can help.</h2>
-        <p>
-          For priorities, investment and organizational decisions, explore{" "}
-          <a href={withBase("/services/ai-strategy/")}>
-            AI strategy consulting
-          </a>{" "}
-          or a{" "}
-          <a href={withBase("/services/leadership/")}>
-            fractional leadership mandate
-          </a>
-          . For a defined software project, see the{" "}
-          <a href={withBase("/services/build/")}>focused build</a>.
-        </p>
-      </section>
-      <AgencyCTA />
     </main>
   );
 }

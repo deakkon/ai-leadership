@@ -81,7 +81,7 @@ export const packageStories: Record<PackageSlug, PackageStory> = {
       {
         title: "Build in small increments",
         description:
-          "Jurica directs architecture. Agents and selected specialists implement bounded tasks in your repository, with tests and human review.",
+          "I direct architecture. Agents and selected specialists implement bounded tasks in your repository, with tests and human review.",
         output: "Working increments and visible implementation evidence.",
       },
       {

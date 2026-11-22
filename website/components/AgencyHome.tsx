@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { identity } from "../lib/site";
+import { identity, pullQuote } from "../lib/site";
 import { packages } from "../lib/agency";
 import { withBase } from "../lib/site-config";
+import { founderExperience } from "../lib/founder";
 import EngagementVisual from "./EngagementVisual";
 
 const situations = [
@@ -54,7 +55,7 @@ const process = [
   },
 ];
 
-export default function V2Home() {
+export default function AgencyHome() {
   const [situation, setSituation] = useState(0);
   const [selected, setSelected] =
     useState<(typeof packages)[number]["slug"]>("leadership");
@@ -63,6 +64,26 @@ export default function V2Home() {
   const preference = useReducedMotion();
   useEffect(() => setReady(true), []);
   const reduced = !ready || preference !== false;
+  const [rotationEnabled, setRotationEnabled] = useState(true);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    const update = () => setVisible(document.visibilityState === "visible");
+    update();
+    document.addEventListener("visibilitychange", update);
+    return () => document.removeEventListener("visibilitychange", update);
+  }, []);
+  const rotating =
+    rotationEnabled && !hovered && !focused && visible && !reduced;
+  useEffect(() => {
+    if (!rotating) return;
+    const timer = window.setInterval(
+      () => setSituation((index) => (index + 1) % situations.length),
+      3000,
+    );
+    return () => window.clearInterval(timer);
+  }, [rotating]);
   const current = situations[situation];
   const offer = packages.find((p) => p.slug === selected)!;
   const entrance = reduced ? false : { opacity: 0, y: 14 };
@@ -81,26 +102,43 @@ export default function V2Home() {
             <span>Working software.</span>
           </h1>
           <p className="v2-hero-description">
-            I’m Jurica. I help B2B teams choose where to invest in AI, then lead
-            the engineering to put the right ideas into use.
+            I’m Jurica, a former VP of AI & Data Science with over a decade of
+            experience in applied AI. I help B2B teams choose where to invest in
+            AI, then lead the engineering to put the right ideas into use.
           </p>
           <div className="v2-actions">
             <a className="v2-button" href="#v2-packages">
               Find your engagement <span aria-hidden="true">↗</span>
             </a>
-            <a className="v2-link" href={withBase("/v2/founder/")}>
-              Meet your technical lead <span aria-hidden="true">→</span>
+            <a className="v2-link" href={withBase("/founder/")}>
+              More about me <span aria-hidden="true">→</span>
             </a>
           </div>
-          <div className="v2-hero-proof">
-            <span>10+ years in applied AI</span>
-            <span>Former VP of AI & Data Science</span>
-          </div>
         </div>
-        <div className="v2-workbench">
+        <div
+          className="v2-workbench"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          onFocusCapture={() => setFocused(true)}
+          onBlurCapture={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget))
+              setFocused(false);
+          }}
+        >
           <div className="v2-workbench-top">
             <span>A practical starting point</span>
-            <span className="v2-small-label">Explore ↓</span>
+            <button
+              type="button"
+              className="v2-rotation-control"
+              disabled={ready && preference === true}
+              onClick={() => setRotationEnabled((value) => !value)}
+            >
+              {ready && preference === true
+                ? "Automatic rotation off"
+                : rotationEnabled
+                  ? "Pause automatic rotation"
+                  : "Start automatic rotation"}
+            </button>
           </div>
           <div
             className="v2-situation-picker"
@@ -112,7 +150,11 @@ export default function V2Home() {
                 type="button"
                 key={item.label}
                 aria-pressed={situation === i}
-                onClick={() => { setSituation(i); setSelected(item.package); }}
+                onClick={() => {
+                  setRotationEnabled(false);
+                  setSituation(i);
+                  setSelected(item.package);
+                }}
               >
                 {item.label}
                 {situation === i && (
@@ -127,7 +169,7 @@ export default function V2Home() {
           </div>
           <div
             className="v2-workbench-content"
-            aria-live="polite"
+            aria-live={rotating ? "off" : "polite"}
             aria-atomic="true"
           >
             <AnimatePresence initial={false} mode="wait">
@@ -167,8 +209,8 @@ export default function V2Home() {
           <div className="v2-human-rail">
             <span className="v2-avatar">JŠ</span>
             <div>
-              <strong>Jurica leads the decisions.</strong>
-              <span>AI tools assist with execution.</span>
+              <strong>I lead the decisions.</strong>
+              <span>I use AI tools to help with execution.</span>
             </div>
             <span className="v2-check" aria-hidden="true">
               ✓
@@ -183,7 +225,6 @@ export default function V2Home() {
         aria-labelledby="v2-services-title"
       >
         <div className="v2-section-heading">
-          <p className="v2-eyebrow">01 / The work</p>
           <h2 id="v2-services-title">
             Start with what
             <br />
@@ -240,99 +281,30 @@ export default function V2Home() {
       </section>
 
       <section
-        className="v2-section v2-packages"
-        id="v2-packages"
-        aria-labelledby="v2-packages-title"
+        className="v2-section v2-experience"
+        id="v2-experience"
+        aria-labelledby="experience-title"
       >
         <div className="v2-section-heading">
-          <p className="v2-eyebrow">02 / Ways to work together</p>
-          <h2 id="v2-packages-title">
-            A clear scope.
-            <br />A useful outcome.
-          </h2>
+          <h2 id="experience-title">Work I’ve led.</h2>
           <p>
-            Choose a package to explore the work, the process and the
-            investment. Prices exclude VAT where applicable.
+            Selected projects from my previous leadership and engineering roles,
+            across healthcare, language systems and speech.
           </p>
         </div>
-        <div
-          className="v2-package-picker"
-          data-v2-package-picker
-          role="group"
-          aria-label="Choose an engagement"
-        >
-          {packages.map((p, i) => (
-            <button
-              type="button"
-              key={p.slug}
-              aria-pressed={selected === p.slug}
-              onClick={() => setSelected(p.slug)}
-            >
-              <span className="v2-small-label">
-                0{i + 1} / {p.timeline}
-              </span>
-              <strong>{p.name}</strong>
-              <span>
-                {p.price}
-                <span className="v2-picker-unit"> {p.unit}</span>
-              </span>
-              {selected === p.slug && (
-                <motion.span
-                  className="v2-package-active"
-                  layoutId={reduced ? undefined : "v2-package"}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
-            </button>
+        <div className="v2-evidence-grid">
+          {founderExperience.slice(0, 3).map((item) => (
+            <article key={item.domain}>
+              <h3>{item.domain}</h3>
+              <p className="v2-evidence-role">{item.role}</p>
+              <p>{item.work}</p>
+              <p>{item.contribution}</p>
+            </article>
           ))}
         </div>
-        <div
-          className="v2-package-stage"
-          aria-live="polite"
-          aria-atomic="false"
-        >
-          <AnimatePresence initial={false} mode="wait">
-            <motion.div
-              className="v2-package-panel"
-              key={selected}
-              initial={entrance}
-              animate={{ opacity: 1, y: 0 }}
-              exit={exit}
-              transition={{ duration: reduced ? 0 : 0.24 }}
-            >
-              <div className="v2-package-overview">
-                <p className="v2-eyebrow">{offer.category}</p>
-                <h3>{offer.name}</h3>
-                <p>{offer.summary}</p>
-                <ul>
-                  {offer.deliverables.map((item) => (
-                    <li key={item}>
-                      <span aria-hidden="true">✓</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="v2-package-price">
-                  <strong>{offer.price}</strong>
-                  <span>{offer.unit} · ex VAT where applicable</span>
-                </div>
-                <a
-                  className="v2-button"
-                  href={withBase(`/v2/services/${offer.slug}/`)}
-                >
-                  Explore scope & use cases <span aria-hidden="true">↗</span>
-                </a>
-              </div>
-              <div className="v2-package-visual">
-                <EngagementVisual kind={offer.slug} />
-                <p className="v2-package-boundary">{offer.exclusions}</p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-        <p className="v2-package-footnote">
-          Final scope, capacity and dates are agreed in writing. Production
-          hosting and model usage are separate.
+        <p className="v2-evidence-note">
+          These projects come from past employment, separate from agency
+          engagements. Employer and client names are omitted.
         </p>
       </section>
 
@@ -342,7 +314,6 @@ export default function V2Home() {
         aria-labelledby="v2-process-title"
       >
         <div className="v2-section-heading">
-          <p className="v2-eyebrow">03 / My approach</p>
           <h2 id="v2-process-title">
             I lead the work.
             <br />
@@ -414,7 +385,6 @@ export default function V2Home() {
           </div>
         </div>
         <div>
-          <p className="v2-eyebrow">04 / Your technical lead</p>
           <h2 id="v2-founder-title">Hi, I’m Jurica.</h2>
           <p>
             I’ve built language systems, led AI teams and owned platform
@@ -436,14 +406,121 @@ export default function V2Home() {
               <strong>PhD</strong>Research background
             </span>
           </div>
-          <a className="v2-link" href={withBase("/v2/founder/")}>
+          <a className="v2-link" href={withBase("/founder/")}>
             Explore domains, roles & projects <span aria-hidden="true">↗</span>
           </a>
         </div>
       </section>
 
+      <section
+        className="v2-section v2-recommendation"
+        aria-labelledby="recommendation-title"
+      >
+        <h2 id="recommendation-title">A colleague’s perspective.</h2>
+        <figure>
+          <blockquote>
+            <p>“{pullQuote.quote}”</p>
+          </blockquote>
+          <figcaption>{pullQuote.author}</figcaption>
+        </figure>
+      </section>
+
+      <section
+        className="v2-section v2-packages"
+        id="v2-packages"
+        aria-labelledby="v2-packages-title"
+      >
+        <div className="v2-section-heading">
+          <h2 id="v2-packages-title">
+            A clear scope.
+            <br />A useful outcome.
+          </h2>
+          <p>
+            Choose a package to explore the work, the process and the
+            investment. Prices exclude VAT where applicable.
+          </p>
+        </div>
+        <div
+          className="v2-package-picker"
+          data-v2-package-picker
+          role="group"
+          aria-label="Choose an engagement"
+        >
+          {packages.map((p, i) => (
+            <button
+              type="button"
+              key={p.slug}
+              aria-pressed={selected === p.slug}
+              onClick={() => setSelected(p.slug)}
+            >
+              <span className="v2-small-label">
+                0{i + 1} / {p.timeline}
+              </span>
+              <strong>{p.name}</strong>
+              <span>
+                {p.price}
+                <span className="v2-picker-unit"> {p.unit}</span>
+              </span>
+              {selected === p.slug && (
+                <motion.span
+                  className="v2-package-active"
+                  layoutId={reduced ? undefined : "v2-package"}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+            </button>
+          ))}
+        </div>
+        <div
+          className="v2-package-stage"
+          aria-live="polite"
+          aria-atomic="false"
+        >
+          <AnimatePresence initial={false} mode="wait">
+            <motion.div
+              className="v2-package-panel"
+              key={selected}
+              initial={entrance}
+              animate={{ opacity: 1, y: 0 }}
+              exit={exit}
+              transition={{ duration: reduced ? 0 : 0.24 }}
+            >
+              <div className="v2-package-overview">
+                <h3>{offer.name}</h3>
+                <p>{offer.summary}</p>
+                <ul>
+                  {offer.deliverables.map((item) => (
+                    <li key={item}>
+                      <span aria-hidden="true">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="v2-package-price">
+                  <strong>{offer.price}</strong>
+                  <span>{offer.unit} · ex VAT where applicable</span>
+                </div>
+                <a
+                  className="v2-button"
+                  href={withBase(`/services/${offer.slug}/`)}
+                >
+                  Explore scope & use cases <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+              <div className="v2-package-visual">
+                <EngagementVisual kind={offer.slug} />
+                <p className="v2-package-boundary">{offer.exclusions}</p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        <p className="v2-package-footnote">
+          Final scope, capacity and dates are agreed in writing. Production
+          hosting and model usage are separate.
+        </p>
+      </section>
+
       <section className="v2-contact" id="v2-contact">
-        <p className="v2-eyebrow">Let’s start with the problem</p>
         <h2>
           What are you
           <br />

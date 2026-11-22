@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
-import { AgencyCTA, PageIntro } from "../../../components/Agency";
 import { packages, pageMetadata } from "../../../lib/agency";
-import { siteUrl, withBase } from "../../../lib/site";
+import { packageStories } from "../../../lib/package-stories";
 import { serviceGuides } from "../../../lib/service-guides";
 import ServiceGuide from "../../../components/ServiceGuide";
-import PackageExplorer from "../../../components/PackageExplorer";
-import { packageStories } from "../../../lib/package-stories";
+import { identity, siteUrl } from "../../../lib/site";
+import { withBase } from "../../../lib/site-config";
 import EngagementVisual from "../../../components/EngagementVisual";
+import PackageExplorer from "../../../components/PackageExplorer";
 export function generateStaticParams() {
   return [...packages, ...serviceGuides].map((p) => ({ slug: p.slug }));
 }
@@ -19,10 +19,12 @@ export async function generateMetadata({
   const guide = serviceGuides.find((guide) => guide.slug === slug);
   if (guide)
     return pageMetadata(guide.title, guide.description, `/services/${slug}/`);
-  const p = packages.find((p) => p.slug === slug);
-  return p ? pageMetadata(p.name, p.summary, `/services/${slug}/`) : {};
+  const offer = packages.find((p) => p.slug === slug);
+  return offer
+    ? pageMetadata(`${offer.name}`, offer.summary, `/services/${slug}/`)
+    : {};
 }
-export default async function Service({
+export default async function Package({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -30,55 +32,51 @@ export default async function Service({
   const { slug } = await params;
   const guide = serviceGuides.find((guide) => guide.slug === slug);
   if (guide) return <ServiceGuide guide={guide} />;
-  const p = packages.find((p) => p.slug === slug);
-  if (!p) notFound();
+  const offer = packages.find((p) => p.slug === slug);
+  if (!offer) notFound();
   return (
-    <main id="main" className="agency-main">
+    <main id="main" className="v2-main v2-detail">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            name: p.name,
-            description: p.summary,
-            url: `${siteUrl}/services/${p.slug}/`,
+            name: offer.name,
+            description: offer.summary,
+            url: `${siteUrl}/services/${offer.slug}/`,
             provider: { "@id": `${siteUrl}/#agency` },
             areaServed: ["Germany", "European Union"],
           }),
         }}
       />
-      <a
-        className="agency-text-link package-back-link"
-        href={withBase("/services/#packages")}
-      >
-        ← All packages
+      <a className="v2-back" href={withBase("/#v2-packages")}>
+        ← Compare engagements
       </a>
-      <PageIntro kicker={p.category} title={p.name}>
-        <p>{p.summary}</p>
-      </PageIntro>
-      <EngagementVisual kind={p.slug} />
+      <header className="v2-page-heading">
+        <h1>{offer.name}</h1>
+        <p>{offer.summary}</p>
+      </header>
+      <EngagementVisual kind={offer.slug} />
       <div className="package-deep-dive">
-        <aside
-          className="agency-detail-price package-price-summary"
-          aria-label="Engagement at a glance"
-        >
+        <aside className="agency-detail-price package-price-summary">
           <p className="agency-price">
-            {p.price}
-            <span>{p.unit} · ex VAT where applicable</span>
+            {offer.price}
+            <span>{offer.unit} · ex VAT where applicable</span>
           </p>
-          <p>{p.timeline}</p>
-          <p>{p.audience}</p>
-          <a className="agency-button" href={withBase("/contact/")}>
-            Discuss this engagement
+          <p>{offer.timeline}</p>
+          <p>{offer.audience}</p>
+          <a
+            className="v2-button"
+            href={identity.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Discuss this scope ↗
           </a>
-          <p className="agency-small">
-            Final scope, allocation and dates are agreed in writing.
-          </p>
         </aside>
-        <PackageExplorer offer={p} story={packageStories[p.slug]} />
+        <PackageExplorer offer={offer} story={packageStories[offer.slug]} />
       </div>
-      <AgencyCTA />
     </main>
   );
 }

@@ -1,4 +1,4 @@
-/* V2 is a scoped design preview. V1 retains its existing presentation. */
+/* Shared site design, promoted from the V2 preview. */
 .v2-site {
   --bg: #f5f6f0;
   --surface: #fff;
@@ -1071,5 +1071,112 @@
   .v2-button:hover,
   .v2-service-card:hover {
     transform: none;
+  }
+}
+
+/* Content headings replace decorative section labels. */
+.v2-section-heading,
+.v2-process .v2-section-heading {
+  grid-template-columns: 1.15fr 1fr;
+}
+.v2-section-heading > h2 {
+  grid-column: auto;
+}
+.v2-section-heading > p:last-child {
+  max-width: 34rem;
+}
+.v2-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+.v2-evidence-grid article {
+  padding: 1.75rem;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  background: var(--surface);
+}
+.v2-evidence-grid h3 {
+  font-size: 1.4rem;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+  margin: 0 0 1rem;
+}
+.v2-evidence-grid p {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.v2-evidence-grid .v2-evidence-role {
+  color: var(--ink);
+  font-weight: 550;
+}
+.v2-evidence-note {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 0.875rem;
+  max-width: 60rem;
+  margin-top: 1.5rem;
+}
+.v2-recommendation {
+  max-width: 62rem;
+  margin-inline: auto;
+}
+.v2-recommendation h2 {
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  letter-spacing: -0.05em;
+  margin: 0 0 2rem;
+}
+.v2-recommendation figure {
+  margin: 0;
+}
+.v2-recommendation blockquote p {
+  font-size: clamp(1.25rem, 2.3vw, 1.8rem);
+  line-height: 1.6;
+  letter-spacing: -0.025em;
+}
+.v2-recommendation figcaption {
+  color: var(--muted);
+  margin-top: 1.75rem;
+  line-height: 1.6;
+}
+.v2-rotation-control {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.5rem 0.7rem;
+  min-height: 2.75rem;
+  max-width: 12rem;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+.v2-desktop-nav a[aria-current] {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+.v2-site > .agency-main {
+  color: var(--ink);
+  background: var(--bg);
+}
+.v2-nav {
+  view-transition-name: site-header;
+}
+@media (max-width: 900px) {
+  .v2-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 760px) {
+  .v2-section-heading,
+  .v2-process .v2-section-heading {
+    grid-template-columns: 1fr;
+  }
+  .v2-workbench-top {
+    gap: 1rem;
+  }
+  .v2-rotation-control {
+    max-width: 9rem;
   }
 }

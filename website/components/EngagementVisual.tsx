@@ -137,7 +137,6 @@ export default function EngagementVisual({ kind }: { kind: EngagementKind }) {
       aria-labelledby="engagement-visual-title"
     >
       <figcaption>
-        <p className="agency-kicker">The engagement, mapped out</p>
         <h2 id="engagement-visual-title">{visual.title}</h2>
         <p>{visual.description}</p>
       </figcaption>

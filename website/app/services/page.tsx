@@ -1,84 +1,81 @@
-import { AgencyCTA, PackageGrid, PageIntro } from "../../components/Agency";
-import { pageMetadata } from "../../lib/agency";
+import { packages, pageMetadata } from "../../lib/agency";
 import { serviceGuides } from "../../lib/service-guides";
-import { withBase } from "../../lib/site";
+import { withBase } from "../../lib/site-config";
 export const metadata = pageMetadata(
-  "Software delivery, AI automation & fractional leadership",
-  "Choose a discovery sprint, a focused software build, an ongoing delivery partnership or fractional AI / CTO leadership.",
+  "Services & engagements",
+  "Explore AI leadership, technical discovery, focused software builds and ongoing delivery engagements.",
   "/services/",
 );
 export default function Services() {
   return (
-    <main id="main" className="agency-main">
-      <PageIntro
-        kicker="Services & packages"
-        title="Find the right engagement."
-      >
+    <main id="main" className="v2-main v2-detail">
+      <header className="v2-page-heading">
+        <p className="v2-eyebrow">Services & engagements</p>
+        <h1>
+          What needs
+          <br />
+          to move forward?
+        </h1>
         <p>
-          Advice on an AI investment, a software project or ongoing technical
-          leadership. Explore the services and packages to see what fits.
+          Advice on AI investment, a defined software project, or ongoing
+          leadership and engineering capacity. Each engagement starts with an
+          agreed scope.
         </p>
-      </PageIntro>
+      </header>
       <section
-        className="agency-section"
+        className="v2-section"
         aria-label="Find the service for your priorities"
       >
-        <h2>What needs to move forward?</h2>
-        <div className="service-tiles">
+        <div className="v2-evidence-grid">
           {serviceGuides.map((guide) => (
             <a
-              className="service-tile"
-              key={guide.slug}
+              className="v2-service-card"
               href={withBase(`/services/${guide.slug}/`)}
-              aria-labelledby={`service-${guide.slug}-title`}
+              key={guide.slug}
             >
-              <p className="agency-kicker">{guide.kicker}</p>
-              <h3 id={`service-${guide.slug}-title`}>{guide.title}</h3>
+              <h2>{guide.title}</h2>
               <p>{guide.fit}</p>
-              <span className="agency-text-link">
-                Explore this service <span aria-hidden="true">↗</span>
-              </span>
+              <span>Explore this service</span>
             </a>
           ))}
         </div>
       </section>
-      <section
-        className="agency-section"
-        id="packages"
-        aria-labelledby="packages-title"
-      >
-        <div className="agency-section-head">
-          <p className="agency-kicker">Choose an engagement</p>
-          <h2 id="packages-title">Choose a package.</h2>
-          <p>
-            Explore each package for its scope, working process, example use
-            cases and commercial terms.
-          </p>
-        </div>
-        <PackageGrid all />
-      </section>
-      <section className="agency-section agency-prose">
-        <h2>Clear scope before commitment.</h2>
+      <div className="v2-services-intro">
+        <h2>Three kinds of work.</h2>
         <p>
-          Discovery is useful when the work is ambiguous; it is not mandatory
-          when a release is already well defined. Your proposal names the
-          outcome, dependencies, acceptance tests, human oversight and delivery
-          allocation.
+          AI strategy and leadership. Software development. AI workflow
+          automation. The package determines the scope and working relationship.
         </p>
-        <h3>Development costs and production costs are separate.</h3>
+      </div>
+      <div className="v2-offers-grid" id="packages">
+        {packages.map((p, i) => (
+          <a
+            className="v2-service-offer"
+            key={p.slug}
+            href={withBase(`/services/${p.slug}/`)}
+          >
+            <h2>{p.name}</h2>
+            <p>{p.summary}</p>
+            <span className="v2-offer-time">{p.timeline}</span>
+            <div className="v2-offer-price">
+              <strong>{p.price}</strong>
+              <span>{p.unit} · ex VAT where applicable</span>
+            </div>
+            <span className="v2-link">
+              Scope, process & use cases <span aria-hidden="true">↗</span>
+            </span>
+          </a>
+        ))}
+      </div>
+      <div className="v2-detail-note">
         <p>
-          Our development tooling is covered by the project quote or agreed
-          allowance. Your hosting, external services and production AI usage run
-          in your own accounts, with budgets and alerts agreed before launch.
+          Production hosting and model usage are separate. Support, specialist
+          capacity and final scope are agreed in writing.
         </p>
-        <h3>Support has its own scope.</h3>
-        <p>
-          Every build includes handover and a defined defect-remediation window.
-          Ongoing monitoring, incident response and enhancement work are agreed
-          separately. No 24/7 service is implied.
-        </p>
-      </section>
-      <AgencyCTA />
+        <a className="v2-link" href={withBase("/#v2-packages")}>
+          Compare packages interactively →
+        </a>
+      </div>
     </main>
   );
 }

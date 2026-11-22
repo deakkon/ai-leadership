@@ -99,7 +99,7 @@ export const packages = [
     audience:
       "For founders and leadership teams who need senior technical ownership without a full-time executive hire.",
     summary:
-      "Work directly with Jurica on AI investment, roadmap, architecture and vendor decisions, with a defined monthly mandate.",
+      "Work directly with me on AI investment, roadmap, architecture and vendor decisions, with a defined monthly mandate.",
     outcome:
       "A technical direction tied to business priorities, with explicit ownership and decision cadence.",
     deliverables: [

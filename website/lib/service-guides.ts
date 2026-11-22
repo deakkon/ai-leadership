@@ -6,12 +6,12 @@ export const serviceGuides = [
       "AI strategy guidance for CEOs and leadership teams: prioritize opportunities, compare build and buy options, and agree ownership, costs and a practical roadmap.",
     kicker: "Decide where AI belongs",
     answer:
-      "We help leaders connect AI investment to business priorities. Start with the decisions your organization needs to make, compare the realistic options, and agree what should happen next—with a named owner and evidence to review.",
+      "I help leaders connect AI investment to business priorities. Start with the decisions your organization needs to make, compare the realistic options, and agree what should happen next—with a named owner and evidence to review.",
     fit: "For CEOs, COOs and leadership teams in B2B startups and European SMEs facing scattered experiments, unclear priorities or uncertainty about what modern AI can reliably do.",
     sections: [
       {
         title: "Start with the business decision",
-        text: "What needs to improve: customer response, delivery speed, operating cost or decision quality? We examine the current workflow, available data, existing licenses and team capability before recommending tools. Conventional automation, buying software or deferring investment may be the right answer.",
+        text: "What needs to improve: customer response, delivery speed, operating cost or decision quality? I examine the current workflow, available data, existing licenses and team capability before recommending tools. Conventional automation, buying software or deferring investment may be the right answer.",
       },
       {
         title: "Prioritize a portfolio, then fund a bounded step",
@@ -35,7 +35,7 @@ export const serviceGuides = [
     boundary:
       "The scope depends on organization size, stakeholder access and existing evidence. An organization-wide strategy is separately scoped; it is not included in a single-workflow discovery sprint. Implementation, exhaustive audits and ongoing operational support need their own agreement.",
     engagement:
-      "For ongoing decisions, fractional AI / CTO leadership starts from €7,500/month with a defined mandate and capacity. For a single technical opportunity, discovery is €4,500 fixed. We agree the appropriate scope before starting; there is no obligation to commission a build.",
+      "For ongoing decisions, fractional AI / CTO leadership starts from €7,500/month with a defined mandate and capacity. For a single technical opportunity, discovery is €4,500 fixed. I agree the appropriate scope before starting; there is no obligation to commission a build.",
     packageSlug: "leadership",
     packageLabel: "Explore fractional leadership",
     insightSlug: "ai-platform-strategy",
@@ -65,7 +65,7 @@ export const serviceGuides = [
       "Founder-led custom software development for B2B startups and European SMEs. Internal tools, product features and integrations with reviewed releases and handover.",
     kicker: "Build a useful release",
     answer:
-      "We build bounded product features, internal tools and integrations for B2B teams. Senior human engineering leads architecture and release review, while AI agents and selected specialists assist implementation.",
+      "I build bounded product features, internal tools and integrations for B2B teams. I lead architecture and release review, while AI agents and selected specialists assist implementation.",
     fit: "For founders, CTOs and product owners with a blocked release, an operational bottleneck or an existing product that needs a focused improvement.",
     sections: [
       {
@@ -99,7 +99,7 @@ export const serviceGuides = [
       {
         question: "Does the software need AI features?",
         answer:
-          "No. We use AI-assisted delivery where it helps, but the product can be conventional software. Choose features because they serve users and business objectives.",
+          "No. I use AI-assisted delivery where it helps, but the product can be conventional software. Choose features because they serve users and business objectives.",
       },
       {
         question: "Who owns the code and production accounts?",
@@ -120,7 +120,7 @@ export const serviceGuides = [
       "AI workflow automation for B2B operations: document processing, retrieval and agent-assisted workflows with evaluation, human review and explicit usage costs.",
     kicker: "Make AI useful in operations",
     answer:
-      "We design and build AI-assisted workflows around a specific operating problem. Evaluate representative examples, constrain what the system can do, and provide human review and fallbacks where errors matter.",
+      "I design and build AI-assisted workflows around a specific operating problem. Evaluate representative examples, constrain what the system can do, and provide human review and fallbacks where errors matter.",
     fit: "For operations and technology leaders dealing with repetitive document work, information retrieval or disconnected systems, with a process owner and access to representative data.",
     sections: [
       {
@@ -147,7 +147,7 @@ export const serviceGuides = [
       "Human review responsibilities and handover notes",
     ],
     boundary:
-      "We do not promise universal accuracy, unsupervised authority or guaranteed savings. Sensitive data, regulated decisions, complex migrations and specialist audits require explicit assessment and scope before implementation.",
+      "I do not promise universal accuracy, unsupervised authority or guaranteed savings. Sensitive data, regulated decisions, complex migrations and specialist audits require explicit assessment and scope before implementation.",
     engagement:
       "Technical discovery is €4,500 fixed for one opportunity. A focused production build starts from €18,000, usually 4–6 weeks. These are separate scopes; discovery is not mandatory when adequate evidence and a brief already exist.",
     packageSlug: "discovery",
@@ -158,7 +158,7 @@ export const serviceGuides = [
       {
         question: "Can you use our existing tools?",
         answer:
-          "We assess existing licenses, APIs and infrastructure before proposing new software. Access, vendor terms and data requirements determine the feasible options.",
+          "I assess existing licenses, APIs and infrastructure before proposing new software. Access, vendor terms and data requirements determine the feasible options.",
       },
       {
         question: "Do you run autonomous agents without review?",
