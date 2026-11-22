@@ -47,7 +47,7 @@ export default function ServiceGuide({
       </PageIntro>
       <div className="agency-detail-layout">
         <aside className="agency-detail-price">
-          <h2>Is this your starting point?</h2>
+          <h2>Is this for you?</h2>
           <p>{guide.fit}</p>
           <a className="agency-button" href={withBase("/contact/")}>
             Discuss your priorities
@@ -58,7 +58,7 @@ export default function ServiceGuide({
             </a>
           </p>
           <p>
-            <a href="#service-packages">Compare relevant packages ↓</a>
+            <a href="#service-packages">Compare packages</a>
           </p>
         </aside>
         <div className="agency-prose">
@@ -68,7 +68,7 @@ export default function ServiceGuide({
               <p>{section.text}</p>
             </section>
           ))}
-          <h2>What useful progress looks like</h2>
+          <h2>What you can expect</h2>
           <ul>
             {guide.outputs.map((output) => (
               <li key={output}>{output}</li>
@@ -90,9 +90,8 @@ export default function ServiceGuide({
             </a>
           </p>
           <p>
-            Guidance and delivery led by{" "}
-            <a href={withBase("/founder/")}>Dr. Jurica Ševa</a>, based in
-            Berlin.
+            I lead the work from Berlin.{" "}
+            <a href={withBase("/founder/")}>Read my background</a>.
           </p>
         </div>
       </div>
@@ -102,12 +101,11 @@ export default function ServiceGuide({
         aria-labelledby="service-packages-title"
       >
         <div className="agency-section-head">
-          <p className="agency-kicker">Ways to work together</p>
-          <h2 id="service-packages-title">Choose your engagement.</h2>
+          <h2 id="service-packages-title">Compare packages.</h2>
           <p>
             {guide.slug === "ai-strategy"
-              ? "Explore an ongoing leadership mandate or a technical discovery for one opportunity. Organization-wide strategy needs its own agreed scope."
-              : "Start with discovery when the decision is unclear, a build when the brief is ready, or a partnership for a funded roadmap."}
+              ? "Choose ongoing leadership for recurring decisions, or discovery for one technical opportunity. Organization-wide strategy needs its own agreed scope."
+              : "Choose discovery to assess an idea, a build to deliver a defined release, or a partnership for ongoing engineering."}
           </p>
         </div>
         <PackageGrid
@@ -126,7 +124,7 @@ export default function ServiceGuide({
         }
         description={
           guide.slug === "ai-strategy"
-            ? "Bring your business priorities, current experiments and unanswered questions. We’ll identify a useful next step together."
+            ? "Bring your priorities, current experiments and unanswered questions. I’ll help you compare the options before you commit to a build."
             : undefined
         }
       />

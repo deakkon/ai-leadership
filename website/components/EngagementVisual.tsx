@@ -11,7 +11,7 @@ export type EngagementKind =
   | "approach";
 const visuals = {
   discovery: {
-    title: "Turn options into a decision.",
+    title: "Compare the options before building.",
     description:
       "Compare the alternatives against real workflow evidence before choosing the next step.",
     labels: [
@@ -38,7 +38,7 @@ const visuals = {
     ],
   },
   partnership: {
-    title: "A rhythm for ongoing delivery.",
+    title: "Plan and review ongoing work.",
     description:
       "Plan the work, deliver in small increments and use regular reviews to choose what comes next.",
     labels: ["Plan", "Build & test", "Demo & review"],
@@ -49,9 +49,9 @@ const visuals = {
     ],
   },
   leadership: {
-    title: "Connect the decisions.",
+    title: "Keep AI decisions tied to business priorities.",
     description:
-      "AI direction brings investment, technical choices, governance and adoption back to business priorities.",
+      "Decide what to fund, how it will work, who owns it and how people will use it.",
     labels: ["Investment", "Technology", "Governance", "Adoption"],
     legend: [
       "Allocate investment",

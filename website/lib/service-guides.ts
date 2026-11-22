@@ -6,36 +6,36 @@ export const serviceGuides = [
       "AI strategy guidance for CEOs and leadership teams: prioritize opportunities, compare build and buy options, and agree ownership, costs and a practical roadmap.",
     kicker: "Decide where AI belongs",
     answer:
-      "I help leaders connect AI investment to business priorities. Start with the decisions your organization needs to make, compare the realistic options, and agree what should happen next—with a named owner and evidence to review.",
-    fit: "For CEOs, COOs and leadership teams in B2B startups and European SMEs facing scattered experiments, unclear priorities or uncertainty about what modern AI can reliably do.",
+      "I help leadership teams decide where AI can help, which tools to use and what to fund first. We start with your business goals, existing systems and the people who will use it.",
+    fit: "For leadership teams in B2B startups and European SMEs with scattered AI experiments or no clear plan.",
     sections: [
       {
         title: "Start with the business decision",
-        text: "What needs to improve: customer response, delivery speed, operating cost or decision quality? I examine the current workflow, available data, existing licenses and team capability before recommending tools. Conventional automation, buying software or deferring investment may be the right answer.",
+        text: "What needs to improve: customer response, delivery speed, cost or decision quality? I review the workflow, data, existing software and team before recommending tools. The answer may be conventional automation, buying software or waiting until the organization is ready.",
       },
       {
-        title: "Prioritize a portfolio, then fund a bounded step",
-        text: "Compare opportunities by value, feasibility, data readiness, risk and adoption effort. Document assumptions and evidence gaps. A useful roadmap identifies the next pilot, its owner, budget range, dependencies and the conditions for continuing or stopping.",
+        title: "Choose what to fund first",
+        text: "I compare opportunities by value, feasibility, available data, risk and the effort needed to put them into use. The plan identifies the next pilot, its owner, budget and dependencies, with clear criteria for continuing or stopping.",
       },
       {
-        title: "Make the economics explicit",
-        text: "Consider integration, model usage, human review, retries, support and team enablement alongside subscription prices. Hours released are different from cash saved. Agree a baseline and test low, expected and high usage before treating an ROI estimate as an investment case.",
+        title: "Count the full cost",
+        text: "Look beyond subscription prices. Include integration, AI usage, retries, human review, support and training. I compare low, expected and high usage against the current workflow before estimating the return. Time freed up is not automatically cash saved.",
       },
       {
-        title: "Plan for the organization that will use it",
-        text: "Clarify who approves AI use, handles exceptions, evaluates results and owns vendor and data decisions. Identify where legal, privacy, security or employee-representation input is required. Leadership guidance supports those specialists; it does not replace legal advice or provide certification.",
+        title: "Agree who owns the work",
+        text: "I help clarify who approves AI use, checks results, handles exceptions and makes vendor and data decisions. Legal, privacy, security and employee-representation specialists are involved where needed. My guidance does not replace their advice or provide certification.",
       },
     ],
     outputs: [
-      "A decision brief with alternatives, assumptions and evidence gaps",
-      "Prioritized opportunities and a practical next-step roadmap",
-      "Named owners, measurement baselines and review gates",
-      "An adoption and operating-cost plan within the agreed mandate",
+      "A decision brief comparing options, assumptions and missing evidence",
+      "A prioritized plan with a clear next step",
+      "Named owners, a baseline for measuring results and review points",
+      "A plan for rollout and running costs within the agreed scope",
     ],
     boundary:
       "The scope depends on organization size, stakeholder access and existing evidence. An organization-wide strategy is separately scoped; it is not included in a single-workflow discovery sprint. Implementation, exhaustive audits and ongoing operational support need their own agreement.",
     engagement:
-      "For ongoing decisions, fractional AI / CTO leadership starts from €7,500/month with a defined mandate and capacity. For a single technical opportunity, discovery is €4,500 fixed. I agree the appropriate scope before starting; there is no obligation to commission a build.",
+      "For ongoing decisions, fractional AI / CTO leadership starts from €7,500/month with a defined mandate and capacity. For a single technical opportunity, discovery is €4,500 fixed. We agree the scope before starting; there is no obligation to commission a build.",
     packageSlug: "leadership",
     packageLabel: "Explore fractional leadership",
     insightSlug: "ai-platform-strategy",
@@ -44,7 +44,7 @@ export const serviceGuides = [
       {
         question: "Do we need a technical brief before speaking?",
         answer:
-          "No. Bring the business objective, current uncertainties and a decision owner. The first conversation establishes fit and the evidence needed to scope useful work.",
+          "No. Bring the business objective, current uncertainties and a decision owner. In the first conversation, I’ll ask about the problem and whether I can help. We can then identify what is needed to scope the work.",
       },
       {
         question: "Can you advise without building the solution?",
@@ -65,25 +65,25 @@ export const serviceGuides = [
       "Founder-led custom software development for B2B startups and European SMEs. Internal tools, product features and integrations with reviewed releases and handover.",
     kicker: "Build a useful release",
     answer:
-      "I build bounded product features, internal tools and integrations for B2B teams. I lead architecture and release review, while AI agents and selected specialists assist implementation.",
+      "I build product features, internal tools and integrations for B2B teams. I lead architecture and release review, using AI agents and specialist engineers where they help.",
     fit: "For founders, CTOs and product owners with a blocked release, an operational bottleneck or an existing product that needs a focused improvement.",
     sections: [
       {
-        title: "Define the smallest valuable release",
-        text: "Agree the user journey, integrations, dependencies and acceptance scenarios. If the brief is ambiguous, technical discovery can resolve the main decisions. When it is already clear, start directly with a scoped build.",
+        title: "Agree the first release",
+        text: "I work with you to define what the release must do, its integrations and how we will test it. Discovery can resolve open decisions. If the brief is already clear, a build can start without a separate discovery project.",
       },
       {
         title: "Review the work as it develops",
-        text: "Use a client-owned repository, bounded tasks, human code review and tests appropriate to the release. Regular demos expose assumptions early. A passing agent run is not a release decision: the agreed behavior must work in the target environment.",
+        text: "The code stays in your repository. I review changes and tests as the work progresses, with regular demos to check the direction. I approve releases based on the agreed behavior working in your target environment.",
       },
       {
-        title: "Design for the team that inherits it",
-        text: "Include deployment notes, access and configuration handover, operating responsibilities and a named internal owner. Scope user research or specialist design when needed. The delivery plan identifies the human expertise required rather than assuming agents replace it.",
+        title: "Prepare for handover",
+        text: "Your team receives deployment notes, configuration details and clear operating responsibilities. The plan identifies the internal owner and any specialist engineering, design or user research needed.",
       },
     ],
     outputs: [
-      "An agreed workflow or product increment",
-      "Reviewed implementation and acceptance evidence",
+      "One agreed workflow or product release",
+      "Reviewed code and results from the agreed tests",
       "Deployment to the agreed environment",
       "Operating notes, repository ownership and handover",
     ],
@@ -120,30 +120,30 @@ export const serviceGuides = [
       "AI workflow automation for B2B operations: document processing, retrieval and agent-assisted workflows with evaluation, human review and explicit usage costs.",
     kicker: "Make AI useful in operations",
     answer:
-      "I design and build AI-assisted workflows around a specific operating problem. Evaluate representative examples, constrain what the system can do, and provide human review and fallbacks where errors matter.",
-    fit: "For operations and technology leaders dealing with repetitive document work, information retrieval or disconnected systems, with a process owner and access to representative data.",
+      "I automate document handling, information retrieval and repetitive work across systems. I test the workflow on representative examples, set limits on what it can do and keep human review where errors matter.",
+    fit: "For operations and technology leaders dealing with repetitive document work or disconnected systems. The work needs a process owner and access to representative data.",
     sections: [
       {
-        title: "Assess the workflow before choosing an agent",
-        text: "Map inputs, decisions, exceptions, permissions and handoffs. Determine whether rules, existing software, retrieval or model-driven behavior is appropriate. Start with one bounded workflow rather than a promise to automate an entire department.",
+        title: "Map the work before choosing tools",
+        text: "I map the inputs, decisions, exceptions, access permissions and handoffs. Then I compare rules, existing tools, search and AI agents. The starting scope is one workflow, not an entire department.",
       },
       {
-        title: "Evaluate useful work, including failures",
-        text: "Agree representative test cases and acceptable behavior. Measure task completion, exceptions, latency, review burden and cost per accepted outcome. Test unsafe or uncertain inputs and ensure the system can escalate or stop.",
+        title: "Test failures as well as successes",
+        text: "I agree test cases with you and check completed tasks, exceptions, response time, review effort and cost. Tests include unsafe or uncertain inputs, with a way to stop or hand work to a person.",
       },
       {
         title: "Separate delivery tools from production usage",
-        text: "Agency development tools sit within the project quote or written allowance. Production models, hosting and external services normally run in client accounts with agreed budgets and alerts. Estimate retries, context growth, evaluations and human review instead of relying on token prices alone.",
+        text: "Development tools are covered by the project quote or written allowance. Production AI services, hosting and integrations normally run in your accounts, with agreed budgets and alerts. The estimate includes retries, larger model inputs, test runs and human review.",
       },
       {
-        title: "Prepare for adoption and operation",
-        text: "Agree who owns the workflow, reviews exceptions and responds to incidents. Provide operating notes and a scoped handover. Model changes, monitoring and ongoing improvements need an explicit support agreement.",
+        title: "Agree what happens after launch",
+        text: "I agree with you who will own the workflow, review exceptions and respond to incidents, then provide operating notes and handover. Model changes, monitoring and ongoing improvements need a separate support agreement.",
       },
     ],
     outputs: [
-      "One scoped workflow and agreed acceptance scenarios",
-      "Evaluated integration with bounded permissions and fallbacks",
-      "An operating-cost estimate and spend controls",
+      "One agreed workflow and clear test cases",
+      "A tested integration with access limits and fallbacks",
+      "A running-cost estimate and spending controls",
       "Human review responsibilities and handover notes",
     ],
     boundary:

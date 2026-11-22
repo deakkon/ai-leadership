@@ -11,26 +11,19 @@ export default function Founder() {
   return (
     <main id="main" className="v2-main v2-detail">
       <header className="v2-page-heading">
-        <h1>
-          Jurica Ševa.
-          <br />
-          Researcher. Engineer. Leader.
-        </h1>
+        <h1>Dr. Jurica Ševa.</h1>
         <p>
           More than ten years across applied AI and software. From building
           language systems to leading teams and owning platform roadmaps.
         </p>
       </header>
       <div className="v2-founder-intro">
-        <span className="v2-founder-monogram" aria-hidden="true">
-          JŠ
-        </span>
         <div>
-          <h2>Direct access to the person leading the work.</h2>
+          <h2>You work directly with me.</h2>
           <p>
             I work with you on priorities, architecture and delivery. My
-            experience spans research, hands-on engineering, department
-            leadership and executive responsibility.
+            background combines research, hands-on engineering and AI team
+            leadership, including executive responsibility.
           </p>
           <p>
             Selected experience below comes from past employment and advisory
@@ -44,8 +37,7 @@ export default function Founder() {
         aria-labelledby="v2-background-title"
         className="v2-section"
       >
-        <p className="v2-eyebrow">Domains, roles & projects</p>
-        <h2 id="v2-background-title">The experience behind the advice.</h2>
+        <h2 id="v2-background-title">Past roles and projects.</h2>
         <div className="founder-experience-grid">
           {founderExperience.map((item, i) => (
             <article className="founder-experience-card" key={item.domain}>
@@ -64,8 +56,7 @@ export default function Founder() {
         </div>
       </section>
       <section className="v2-founder-education">
-        <p className="v2-eyebrow">Research & education</p>
-        <h2>A technical foundation.</h2>
+        <h2>Research and education.</h2>
         <p>
           PhD in Information and Communication Sciences. MSc in Computer
           Science. Fulbright Visiting Scholar in Computer Science.
@@ -77,7 +68,7 @@ export default function Founder() {
         </p>
         <div className="v2-actions">
           <a className="v2-button" href={withBase("/services/")}>
-            Explore the engagements ↗
+            Compare packages
           </a>
           <a
             className="v2-link"

@@ -12,22 +12,22 @@ const chapters = [
   {
     id: "scope",
     title: "What you get",
-    note: "Fit, outcomes and deliverables",
+    note: "Who it’s for and what’s included",
   },
   {
     id: "journey",
     title: "How it works",
-    note: "From the first conversation to the next decision",
+    note: "Steps, reviews and handover",
   },
   {
     id: "examples",
     title: "Where it helps",
-    note: "Three situations this engagement can address",
+    note: "Three example situations",
   },
   {
     id: "investment",
-    title: "Investment & boundaries",
-    note: "Costs, responsibilities and what sits outside the scope",
+    title: "Price & scope",
+    note: "Fees, running costs and limits",
   },
 ] as const;
 
@@ -68,9 +68,9 @@ export default function PackageExplorer({
   const content = [
     <div key="scope" className="package-scope">
       <p className="package-outcome">{offer.outcome}</p>
-      <h3>A useful fit when</h3>
+      <h3>Who it’s for</h3>
       <p>{offer.audience}</p>
-      <h3>Included in the engagement</h3>
+      <h3>What’s included</h3>
       <ul>
         {offer.deliverables.map((item) => (
           <motion.li key={item} variants={itemVariants}>
@@ -79,14 +79,14 @@ export default function PackageExplorer({
         ))}
       </ul>
       <div className="package-takeaway">
-        <span>The decision at the end</span>
+        <span>How we agree it’s done</span>
         <p>{offer.acceptance}</p>
       </div>
     </div>,
     <div key="journey">
       <p>
-        Each stage has a clear purpose and an output you can review. The final
-        proposal sets the dates, dependencies and people involved.
+        The proposal sets the dates, dependencies and people involved. These
+        steps show how the work moves from the first discussion to handover.
       </p>
       <ol className="package-phases">
         {story.phases.map((phase, index) => (
@@ -141,15 +141,15 @@ export default function PackageExplorer({
       </p>
       <h3>AI and infrastructure costs</h3>
       <p>{offer.usage}</p>
-      <h3>Human accountability</h3>
+      <h3>Who makes the decisions</h3>
       <p>
-        Jurica owns technical direction and release review. Agents work on
-        bounded tasks with tests and review. Specialist involvement is named in
-        the delivery plan.
+        I lead technical decisions and release review. AI agents work on
+        specific tasks, with tests and human review. The delivery plan names any
+        specialist engineers involved.
       </p>
       <h3>After handover</h3>
       <p>
-        For implementation work, we propose a 30-day window for reporting
+        For implementation work, I propose a 30-day window for reporting
         deviations from agreed acceptance criteria. Enhancements and ongoing
         operations need a separate scope. Contractual terms and statutory rights
         remain governed by the signed agreement and applicable law.
@@ -168,10 +168,9 @@ export default function PackageExplorer({
     >
       <header className="package-explorer-header">
         <div>
-          <p className="agency-kicker">A closer look</p>
-          <h2 id="package-explorer-title">Explore the engagement.</h2>
+          <h2 id="package-explorer-title">Package details.</h2>
         </div>
-        <p>Open any section, or follow the journey in order.</p>
+        <p>Choose a section or follow the steps in order.</p>
       </header>
       <nav
         className="package-progress"
@@ -188,7 +187,7 @@ export default function PackageExplorer({
                   onClick={() => goTo(index)}
                 >
                   <span className="package-progress-number">0{index + 1}</span>
-                  {["Scope", "Process", "Examples", "Investment"][index]}
+                  {["Scope", "Process", "Examples", "Price"][index]}
                   {active === index && (
                     <motion.span
                       className="package-progress-active"
@@ -206,7 +205,7 @@ export default function PackageExplorer({
               ) : (
                 <a href={`#explore-${chapter.id}`}>
                   <span className="package-progress-number">0{index + 1}</span>
-                  {["Scope", "Process", "Examples", "Investment"][index]}
+                  {["Scope", "Process", "Examples", "Price"][index]}
                 </a>
               )}
             </li>
@@ -263,7 +262,7 @@ export default function PackageExplorer({
                   className="agency-text-link"
                   href={withBase(packageComparisonPath(offer.slug))}
                 >
-                  Compare the packages →
+                  Compare packages
                 </a>
               )}
             </nav>

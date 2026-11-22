@@ -35,7 +35,7 @@ export const packageStories: Record<PackageSlug, PackageStory> = {
       {
         title: "Agree the first release",
         description:
-          "Review a bounded brief, acceptance scenarios and delivery estimate. You can take the brief to your own team or another supplier.",
+          "Review a defined brief, acceptance scenarios and delivery estimate. You can take the brief to your own team or another supplier.",
         output:
           "A decision brief and priced next step, with one consolidated revision.",
       },
@@ -66,7 +66,7 @@ export const packageStories: Record<PackageSlug, PackageStory> = {
         approach:
           "Review the user journey, available APIs and failure cases with the product and engineering owners.",
         outcome:
-          "A bounded technical brief and delivery estimate the team can act on.",
+          "A defined technical brief and delivery estimate the team can act on.",
       },
     ],
   },
@@ -81,7 +81,7 @@ export const packageStories: Record<PackageSlug, PackageStory> = {
       {
         title: "Build in small increments",
         description:
-          "I direct architecture. Agents and selected specialists implement bounded tasks in your repository, with tests and human review.",
+          "I direct architecture. Agents and selected specialists implement defined tasks in your repository, with tests and human review.",
         output: "Working increments and visible implementation evidence.",
       },
       {
@@ -112,7 +112,7 @@ export const packageStories: Record<PackageSlug, PackageStory> = {
         problem:
           "A team needs to turn incoming documents into structured drafts without losing control over exceptions.",
         approach:
-          "Build a bounded ingestion and review flow with evaluations, permissions and a human approval point.",
+          "Build a defined ingestion and review flow with evaluations, permissions and a human approval point.",
         outcome:
           "An evaluated workflow with defined fallbacks, usage budgets and operating responsibility.",
       },
@@ -144,7 +144,7 @@ export const packageStories: Record<PackageSlug, PackageStory> = {
       {
         title: "Deliver, review and demonstrate",
         description:
-          "Work through bounded tasks with human architecture and release review. Use weekly demos or progress reviews to expose blockers and evidence.",
+          "Work through defined tasks with human architecture and release review. Use weekly demos or progress reviews to expose blockers and evidence.",
         output: "Reviewed increments with tests and documentation.",
       },
       {
@@ -161,15 +161,14 @@ export const packageStories: Record<PackageSlug, PackageStory> = {
           "A funded B2B team has a sequence of features and integrations that exceeds its current capacity.",
         approach:
           "Reserve a scoped delivery allocation, agree one active workstream and review progress with the product owner weekly.",
-        outcome:
-          "A regular cadence of accepted increments within the agreed capacity.",
+        outcome: "Regular accepted releases within the agreed capacity.",
       },
       {
         title: "Improve an existing AI workflow",
         problem:
           "A live workflow needs better exception handling, evaluation coverage and integration as usage grows.",
         approach:
-          "Prioritize reliability and operating improvements alongside a written tooling budget and review cadence.",
+          "Prioritize reliability and operating improvements alongside a written tooling budget and review schedule.",
         outcome:
           "Measured workflow improvements and updated operating notes. Incident coverage is separately agreed.",
       },
@@ -187,10 +186,10 @@ export const packageStories: Record<PackageSlug, PackageStory> = {
   leadership: {
     phases: [
       {
-        title: "Define the leadership mandate",
+        title: "Agree my role and authority",
         description:
           "Align the executive sponsor on the decisions to own, business objectives, available capacity and existing responsibilities.",
-        output: "A written mandate with decision rights and a review cadence.",
+        output: "A written scope, decision rights and a review schedule.",
       },
       {
         title: "Set direction and priorities",
@@ -219,7 +218,7 @@ export const packageStories: Record<PackageSlug, PackageStory> = {
         approach:
           "Within a defined mandate, assess opportunities and evidence, clarify ownership and agree the next investment decisions.",
         outcome:
-          "A prioritized direction, decision cadence and accountable owners. A full organization-wide strategy is separately scoped.",
+          "A prioritized direction, decision reviews and accountable owners. A full organization-wide strategy is separately scoped.",
       },
       {
         title: "Make a build-versus-buy decision",
@@ -235,7 +234,7 @@ export const packageStories: Record<PackageSlug, PackageStory> = {
         problem:
           "A growing B2B team needs senior roadmap and architecture decisions before hiring a full-time technology executive.",
         approach:
-          "Agree a bounded CTO mandate, leadership sessions and reviews of vendors, architecture and delivery risks.",
+          "Agree a defined CTO mandate, leadership sessions and reviews of vendors, architecture and delivery risks.",
         outcome:
           "Continuing technical direction and handover objectives. Implementation and broad line management are separate.",
       },

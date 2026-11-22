@@ -47,7 +47,7 @@ export const packages = [
     audience:
       "For teams ready to ship a bounded software release or automate a specific workflow.",
     summary:
-      "Build an internal tool, a product feature or an AI workflow, with tests, deployment and handover agreed before work starts.",
+      "I lead the build of an internal tool, product feature or AI workflow. Testing, deployment and handover are agreed before work starts.",
     outcome: "A working release your team can test, operate and build on.",
     deliverables: [
       "One agreed workflow or product increment",
@@ -74,7 +74,7 @@ export const packages = [
     timeline: "Initial 3-month engagement",
     audience: "For teams with a funded roadmap and a named product owner.",
     summary:
-      "Reserve engineering capacity for a funded roadmap, with agreed priorities, weekly reviews and Jurica leading technical decisions.",
+      "Reserve engineering capacity for your funded roadmap. I lead the technical decisions, with agreed priorities and weekly reviews.",
     outcome:
       "Steady, reviewed progress with visible priorities, costs and release decisions.",
     deliverables: [
@@ -103,9 +103,9 @@ export const packages = [
     audience:
       "For founders and leadership teams who need senior technical ownership without a full-time executive hire.",
     summary:
-      "Work directly with me on AI investment, roadmap, architecture and vendor decisions, with a defined monthly mandate.",
+      "Work directly with me on AI investment, roadmap, architecture and vendor decisions, with an agreed monthly scope and time allocation.",
     outcome:
-      "A technical direction tied to business priorities, with explicit ownership and decision cadence.",
+      "Technical direction tied to business priorities, with clear owners and regular reviews.",
     deliverables: [
       "A defined leadership mandate and time allocation",
       "Roadmap, architecture and vendor decisions",

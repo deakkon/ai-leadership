@@ -3,7 +3,7 @@ import EngagementVisual from "../../components/EngagementVisual";
 import { pageMetadata } from "../../lib/agency";
 export const metadata = pageMetadata(
   "My approach to AI strategy and software delivery",
-  "How Jurica plans, builds and reviews software, uses AI tools and specialists, and hands over the work to your team.",
+  "How I plan, build and review software, use AI tools and specialist engineers, and hand over the work to your team.",
   "/how-we-work/",
 );
 const steps = [
@@ -53,7 +53,6 @@ export default function How() {
         </div>
       </section>
       <section className="agency-philosophy">
-        <p className="agency-kicker">Built for ownership</p>
         <div>
           <h2>Your team keeps the work.</h2>
           <p>

@@ -12,21 +12,18 @@ export default function Contact() {
     <main id="main" className="agency-main">
       <PageIntro
         kicker="Let’s find the useful next step"
-        title="What are you trying to make possible?"
+        title="Tell me about your project."
       >
         <p>
-          A few specifics help: the business problem, who owns it, the budget
-          range and what success looks like.
+          Use the form to prepare a brief, or book a call. The form builds an
+          editable email draft on your device; it does not send anything.
         </p>
       </PageIntro>
       <div className="agency-contact-grid">
         <ProjectBrief />
         <aside className="agency-prose">
           <h2>Prefer a conversation?</h2>
-          <p>
-            Talk directly with Jurica about the problem and whether the work is
-            a fit.
-          </p>
+          <p>Talk directly with me about the problem and whether I can help.</p>
           <a
             className="agency-button"
             href={identity.bookingUrl}
@@ -39,10 +36,10 @@ export default function Contact() {
             The booking link opens an external scheduling service. You can also
             email <a href={`mailto:${identity.email}`}>{identity.email}</a>.
           </p>
-          <h3>A useful fit</h3>
+          <h3>Projects I take on</h3>
           <p>
             B2B software, AI workflows and engineering leadership, with a named
-            business owner and willingness to agree a bounded first step.
+            business owner and an agreed first step.
           </p>
           <h3>Based in Berlin</h3>
           <p>

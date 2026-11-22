@@ -55,7 +55,7 @@ export default async function Package({
         }}
       />
       <a className="v2-back" href={withBase(packageComparisonPath(offer.slug))}>
-        ← Compare engagements
+        Compare packages
       </a>
       <header className="v2-page-heading">
         <h1>{offer.name}</h1>
@@ -76,7 +76,7 @@ export default async function Package({
             target="_blank"
             rel="noopener noreferrer"
           >
-            Discuss this scope ↗
+            Book an introductory call
           </a>
         </aside>
         <PackageExplorer offer={offer} story={packageStories[offer.slug]} />

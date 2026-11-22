@@ -9,9 +9,9 @@ export const metadata = pageMetadata(
 export default function Work() {
   return (
     <main id="main" className="agency-main">
-      <PageIntro kicker="Work and experience" title="Make the brief concrete.">
+      <PageIntro kicker="Work and experience" title="Example project briefs.">
         <p>
-          The briefs below illustrate work we can scope together. They are not
+          These examples show projects I can scope with you. They are not
           completed agency projects or client results.
         </p>
       </PageIntro>
@@ -25,7 +25,7 @@ export default function Work() {
             "Production samples, permission to use the data, and an operations owner to review exceptions.",
           ],
           [
-            "A useful B2B feature beyond the demo",
+            "Taking an AI prototype into production",
             "A startup has a promising AI prototype but lacks evaluation, access control and production integration.",
             "One user journey with authentication, a representative evaluation set, observability and a release plan.",
             "Task success on agreed cases, access isolation, graceful failure and a working rollback.",
@@ -34,7 +34,7 @@ export default function Work() {
           [
             "An internal tool that closes an operational gap",
             "A scaleup is coordinating recurring work across spreadsheets and disconnected SaaS tools.",
-            "One team workflow, a focused interface, role-based access and a bounded integration.",
+            "One team workflow, a focused interface, role-based access and one agreed integration.",
             "End-to-end completion of the agreed workflow, correct permissions and a usable handover.",
             "An accountable process owner and timely feedback from the users.",
           ],
@@ -45,7 +45,7 @@ export default function Work() {
             <p>{context}</p>
             <h3>Possible first release</h3>
             <p>{scope}</p>
-            <h3>Evidence of success</h3>
+            <h3>How to check the result</h3>
             <p>{acceptance}</p>
             <h3>What the client brings</h3>
             <p>{inputs}</p>
@@ -53,15 +53,15 @@ export default function Work() {
         ))}
       </div>
       <section className="agency-section agency-prose">
-        <h2>Experience behind the delivery model</h2>
+        <h2>My background</h2>
         <p>
-          Jurica’s prior leadership work includes AI platform ownership and an
-          eight-person AI/data organization in healthcare, plus production work
-          spanning NLP, semantic search and knowledge graphs. These are personal
-          career credentials, not agency case studies.
+          I’ve owned AI platform roadmaps and led an eight-person AI/data
+          organization in healthcare. My production work includes NLP, semantic
+          search and knowledge graphs. These are personal career credentials,
+          not agency case studies.
         </p>
         <a className="agency-text-link" href={withBase("/founder/")}>
-          Meet the founder
+          Read my background
         </a>
       </section>
       <AgencyCTA />

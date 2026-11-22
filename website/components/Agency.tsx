@@ -19,13 +19,12 @@ export function AgencyCTA({
   return (
     <section className="agency-cta" id="contact">
       <div>
-        <p className="agency-kicker">Get in touch</p>
-        <h2>{title ?? <>What do you need to get done?</>}</h2>
+        <h2>{title ?? <>What are you working on?</>}</h2>
         <p>
           {description ?? (
             <>
-              Tell me about the project or decision you’re working on. I’ll help
-              you work out the next step.
+              Tell me what you want to improve. We can discuss the problem,
+              whether I’m a fit and which kind of support you need.
             </>
           )}
         </p>
@@ -40,7 +39,7 @@ export function AgencyCTA({
           Book an introductory call
         </a>
         <a className="agency-text-link" href={withBase("/contact/")}>
-          Send a brief
+          Write a project brief
         </a>
         <span className="agency-small">
           Berlin · English, German &amp; Croatian
@@ -94,7 +93,7 @@ export function PackageGrid({
               <span>{p.unit} · ex VAT where applicable</span>
             </p>
             <span className="agency-text-link package-card-link">
-              Explore the engagement <span aria-hidden="true">↗</span>
+              See package details <span aria-hidden="true">↗</span>
             </span>
           </div>
         </a>

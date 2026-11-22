@@ -10,16 +10,15 @@ export default function Services() {
   return (
     <main id="main" className="v2-main v2-detail">
       <header className="v2-page-heading">
-        <p className="v2-eyebrow">Services & engagements</p>
         <h1>
-          What needs
+          AI strategy and
           <br />
-          to move forward?
+          software development.
         </h1>
         <p>
-          Advice on AI investment, a defined software project, or ongoing
-          leadership and engineering capacity. Each engagement starts with an
-          agreed scope.
+          I help you decide where AI fits, build software and automate
+          workflows. Start with the problem below, then compare packages for
+          scope and pricing.
         </p>
       </header>
       <section
@@ -41,10 +40,10 @@ export default function Services() {
         </div>
       </section>
       <div className="v2-services-intro">
-        <h2>Three kinds of work.</h2>
+        <h2>Choose the support you need.</h2>
         <p>
-          AI strategy and leadership. Software development. AI workflow
-          automation. The package determines the scope and working relationship.
+          Assess one opportunity, deliver a release, or agree ongoing leadership
+          or engineering support.
         </p>
       </div>
       <div className="v2-offers-grid" id="packages">
@@ -62,7 +61,7 @@ export default function Services() {
               <span>{p.unit} · ex VAT where applicable</span>
             </div>
             <span className="v2-link">
-              Scope, process & use cases <span aria-hidden="true">↗</span>
+              See package details <span aria-hidden="true">↗</span>
             </span>
           </a>
         ))}
@@ -73,7 +72,7 @@ export default function Services() {
           capacity and final scope are agreed in writing.
         </p>
         <a className="v2-link" href={withBase("/#v2-packages")}>
-          Compare packages interactively →
+          Compare packages
         </a>
       </div>
     </main>

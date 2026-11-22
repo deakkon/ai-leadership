@@ -40,24 +40,26 @@ const situations = [
 const process = [
   {
     title: "Agree",
-    description: "The business objective, scope and evidence of success.",
+    description:
+      "I agree the goal, scope and how we will check the result with you.",
     output: "A shared brief",
   },
   {
     title: "Build",
     description:
-      "Small tasks, AI-assisted implementation and specialist support where needed.",
+      "I break the work into small tasks and use AI tools and specialist engineers where they help.",
     output: "Working increments",
   },
   {
     title: "Review",
-    description: "Human code review, tests, evaluations and release decisions.",
-    output: "Acceptance evidence",
+    description:
+      "I review the code, tests and AI evaluations before approving a release.",
+    output: "Test results and release review",
   },
   {
     title: "Hand over",
     description:
-      "Your code, your accounts, operating notes and agreed support.",
+      "I hand over the code and operating notes to your team, with support agreed separately.",
     output: "A system your team owns",
   },
 ];
@@ -136,7 +138,7 @@ export default function AgencyHome() {
           </p>
           <div className="v2-actions">
             <a className="v2-button" href="#v2-packages">
-              Compare engagements <span aria-hidden="true">↗</span>
+              Compare packages <span aria-hidden="true">↗</span>
             </a>
             <a className="v2-link" href={withBase("/founder/")}>
               More about me <span aria-hidden="true">→</span>
@@ -154,7 +156,7 @@ export default function AgencyHome() {
           }}
         >
           <div className="v2-workbench-top">
-            <span>A practical starting point</span>
+            <span>Where do you need help?</span>
             <button
               type="button"
               className="v2-rotation-control"
@@ -243,7 +245,7 @@ export default function AgencyHome() {
             <span className="v2-avatar">JŠ</span>
             <div>
               <strong>I lead the decisions.</strong>
-              <span>I use AI tools to help with execution.</span>
+              <span>I use AI tools for coding and testing.</span>
             </div>
             <span className="v2-check" aria-hidden="true">
               ✓
@@ -272,21 +274,21 @@ export default function AgencyHome() {
           {[
             {
               title: "AI strategy & leadership",
-              text: "Choose opportunities, compare tools and decide what to fund. Give the roadmap an owner.",
+              text: "Compare AI opportunities and tools, decide what to fund and put an owner behind the plan.",
               slug: "leadership",
               symbol: "↗",
               label: "Decide what matters",
             },
             {
               title: "Software development",
-              text: "Internal tools, customer-facing features and integrations, with testing and handover.",
+              text: "Build an internal tool, product feature or integration, with testing and handover.",
               slug: "build",
               symbol: "⌘",
               label: "Build the right release",
             },
             {
               title: "AI workflow automation",
-              text: "Document processing, retrieval and agent-assisted workflows with review and cost controls.",
+              text: "Automate document handling and repetitive steps, with human review and cost controls.",
               slug: "discovery",
               symbol: "⇢",
               label: "Improve how work gets done",
@@ -321,8 +323,7 @@ export default function AgencyHome() {
         <div className="v2-section-heading">
           <h2 id="experience-title">Work I’ve led.</h2>
           <p>
-            Selected projects from my previous leadership and engineering roles,
-            across AI leadership, document workflows and product engineering.
+            Selected work from my previous leadership and engineering roles.
           </p>
         </div>
         <div className="v2-evidence-grid">
@@ -357,8 +358,8 @@ export default function AgencyHome() {
             Your team keeps it.
           </h2>
           <p>
-            Clear decisions, reviewed implementation and a handover your team
-            can use. Explore each stage.
+            See how I plan, build and review the work before handing it over to
+            your team.
           </p>
         </div>
         <div
@@ -411,42 +412,38 @@ export default function AgencyHome() {
         id="v2-founder"
         aria-labelledby="v2-founder-title"
       >
-        <div className="v2-founder-art" aria-hidden="true">
-          <span>JŠ</span>
-          <div>
-            Research.
-            <br />
-            Engineering.
-            <br />
-            Leadership.
-          </div>
-        </div>
         <div>
           <h2 id="v2-founder-title">Hi, I’m Jurica.</h2>
           <p>
             I’ve built language systems, led AI teams and owned platform
-            roadmaps. My background spans healthcare, document intelligence,
-            speech recognition and GenAI product engineering.
+            roadmaps. My work spans healthcare, document intelligence, speech
+            recognition and GenAI product engineering.
           </p>
           <p>
-            I bring that experience to your project directly. You work with me
-            on the priorities, architecture and decisions about what ships.
+            You work with me on priorities, architecture and release decisions.
+            I bring in specialist engineers when the work needs them.
           </p>
-          <div className="v2-founder-facts">
-            <span>
-              <strong>10+ years</strong>Applied AI & software
-            </span>
-            <span>
-              <strong>VP-level</strong>AI platform leadership
-            </span>
-            <span>
-              <strong>PhD</strong>Research background
-            </span>
-          </div>
           <a className="v2-link" href={withBase("/founder/")}>
-            Explore domains, roles & projects <span aria-hidden="true">↗</span>
+            Read my background
           </a>
         </div>
+        <dl
+          className="v2-founder-credentials"
+          aria-label="Education and research"
+        >
+          <div>
+            <dt>PhD</dt>
+            <dd>Information and Communication Sciences</dd>
+          </div>
+          <div>
+            <dt>MSc</dt>
+            <dd>Computer Science</dd>
+          </div>
+          <div>
+            <dt>Fulbright Visiting Scholar</dt>
+            <dd>Computer Science</dd>
+          </div>
+        </dl>
       </section>
 
       <section
@@ -468,13 +465,10 @@ export default function AgencyHome() {
         aria-labelledby="v2-packages-title"
       >
         <div className="v2-section-heading">
-          <h2 id="v2-packages-title">
-            A clear scope.
-            <br />A useful outcome.
-          </h2>
+          <h2 id="v2-packages-title">Choose a package.</h2>
           <p>
-            Choose a package to explore the work, the process and the
-            investment. Prices exclude VAT where applicable.
+            Compare what each package includes, who it is for and what it costs.
+            Prices exclude VAT where applicable.
           </p>
         </div>
         <div
@@ -542,7 +536,7 @@ export default function AgencyHome() {
                   className="v2-button"
                   href={withBase(`/services/${offer.slug}/`)}
                 >
-                  Explore scope & use cases <span aria-hidden="true">↗</span>
+                  See package details <span aria-hidden="true">↗</span>
                 </a>
               </div>
               <div className="v2-package-visual">
@@ -565,8 +559,9 @@ export default function AgencyHome() {
           working on?
         </h2>
         <p>
-          Bring the business goal, the open questions and the constraints. I’ll
-          help you work out a useful next step.
+          In the first conversation, I’ll ask about the problem, your priorities
+          and what is getting in the way. We can then decide whether I’m a fit
+          and what kind of help you need.
         </p>
         <div className="v2-actions">
           <a
