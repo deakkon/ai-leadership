@@ -19,7 +19,8 @@
 .v2-site *::after {
   box-sizing: border-box;
 }
-.v2-site a {
+/* Link defaults must not override explicit button or variant colors. */
+:where(.v2-site) a {
   color: inherit;
 }
 .v2-preview {
