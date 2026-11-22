@@ -1,5 +1,9 @@
 import { notFound } from "next/navigation";
-import { packages, pageMetadata } from "../../../lib/agency";
+import {
+  packages,
+  pageMetadata,
+  packageComparisonPath,
+} from "../../../lib/agency";
 import { packageStories } from "../../../lib/package-stories";
 import { serviceGuides } from "../../../lib/service-guides";
 import ServiceGuide from "../../../components/ServiceGuide";
@@ -50,7 +54,7 @@ export default async function Package({
           }),
         }}
       />
-      <a className="v2-back" href={withBase("/#v2-packages")}>
+      <a className="v2-back" href={withBase(packageComparisonPath(offer.slug))}>
         ← Compare engagements
       </a>
       <header className="v2-page-heading">

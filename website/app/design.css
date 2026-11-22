@@ -548,6 +548,7 @@
   line-height: 1.7;
 }
 .v2-process {
+  --focus: #d9f881;
   background: #17382a;
   color: #eff5e8;
   margin: 1rem -2.5%;
@@ -1180,4 +1181,28 @@
   .v2-rotation-control {
     max-width: 9rem;
   }
+}
+
+.v2-scenario-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-top: 0.5rem;
+  color: var(--accent);
+  font-size: 0.9375rem;
+  font-weight: 550;
+  text-underline-offset: 0.25em;
+}
+.v2-package-picker .v2-package-fit {
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+.v2-evidence-grid .v2-evidence-connection {
+  color: var(--ink);
+}
+.agency-draft [aria-disabled="true"],
+.agency-draft button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }

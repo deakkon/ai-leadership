@@ -67,7 +67,17 @@ export default function SiteShell({ children }: { children: ReactNode }) {
           <summary>
             Menu <span aria-hidden="true">+</span>
           </summary>
-          <nav aria-label="Mobile navigation">{navigation}</nav>
+          <nav aria-label="Mobile navigation">
+            {navigation}
+            <a
+              href={withBase("/contact/")}
+              onClick={() => {
+                if (menu.current) menu.current.open = false;
+              }}
+            >
+              Discuss your project
+            </a>
+          </nav>
         </details>
       </header>
       {children}

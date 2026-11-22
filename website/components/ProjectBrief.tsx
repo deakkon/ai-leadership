@@ -42,7 +42,8 @@ export default function ProjectBrief() {
     const target = event.target as HTMLInputElement;
     if (target.name in errors)
       setErrors((previous) => ({ ...previous, [target.name]: undefined }));
-    if (target.name && draft) {
+    if (target.name && preparedCount > 0) {
+      setPreparedCount(0);
       setDraft("");
       setFeedback(
         "Your details changed. Prepare your brief again when you’re ready.",
@@ -67,7 +68,7 @@ export default function ProjectBrief() {
       onInput={editSource}
     >
       <div className="agency-form-heading">
-        <h2>Tell us about your project</h2>
+        <h2>Tell me about your project</h2>
         <p>Only your name, email and project description are required.</p>
       </div>
       <div className="agency-form-grid">
@@ -190,7 +191,7 @@ export default function ProjectBrief() {
       >
         {feedback}
       </p>
-      {draft && (
+      {preparedCount > 0 && (
         <section className="agency-draft" aria-labelledby="draft-heading">
           <h2 id="draft-heading" ref={draftHeading} tabIndex={-1}>
             Review your project brief
@@ -206,19 +207,35 @@ export default function ProjectBrief() {
               rows={10}
               value={draft}
               onChange={(event) => {
-                setDraft(event.target.value);
-                setFeedback("");
+                const value = event.target.value;
+                setDraft(value);
+                setFeedback(
+                  value.trim()
+                    ? ""
+                    : "Your draft is empty. Add text here or prepare it again.",
+                );
               }}
             />
           </label>
           <div className="agency-actions horizontal">
             <a
               className="agency-button"
-              href={`mailto:${identity.email}?subject=${encodeURIComponent("Project brief — Hooman in the Loop")}&body=${encodeURIComponent(draft)}`}
+              href={
+                draft.trim()
+                  ? `mailto:${identity.email}?subject=${encodeURIComponent("Project brief — Hooman in the Loop")}&body=${encodeURIComponent(draft)}`
+                  : undefined
+              }
+              aria-disabled={!draft.trim()}
+              tabIndex={draft.trim() ? undefined : -1}
             >
               Open email draft
             </a>
-            <button className="agency-text-link" type="button" onClick={copy}>
+            <button
+              className="agency-text-link"
+              type="button"
+              onClick={copy}
+              disabled={!draft.trim()}
+            >
               Copy brief
             </button>
           </div>

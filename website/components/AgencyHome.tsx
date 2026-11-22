@@ -14,6 +14,7 @@ const situations = [
     steps: ["Business priorities", "Options & evidence", "A practical roadmap"],
     result: "A decision your team can act on.",
     package: "leadership",
+    action: "Explore AI leadership",
   },
   {
     label: "Build",
@@ -21,13 +22,19 @@ const situations = [
     steps: ["A scoped release", "Implementation & tests", "Review & handover"],
     result: "Working software in your own repository.",
     package: "build",
+    action: "Explore a focused build",
   },
   {
     label: "Improve",
     question: "What happens after the demo?",
-    steps: ["Find the gaps", "Evaluate & integrate", "Operate & improve"],
-    result: "A workflow with clear operating responsibilities.",
+    steps: [
+      "Assess the workflow",
+      "Compare the options",
+      "Scope the next step",
+    ],
+    result: "A technical brief and a scoped plan for improvement.",
     package: "discovery",
+    action: "Explore a discovery sprint",
   },
 ] as const;
 const process = [
@@ -84,6 +91,27 @@ export default function AgencyHome() {
     );
     return () => window.clearInterval(timer);
   }, [rotating]);
+  useEffect(() => {
+    const restoreSelection = () => {
+      const slug = new URLSearchParams(window.location.search).get("package");
+      const match = packages.find((offer) => offer.slug === slug);
+      setSelected(match?.slug ?? "leadership");
+    };
+    restoreSelection();
+    window.addEventListener("popstate", restoreSelection);
+    return () => window.removeEventListener("popstate", restoreSelection);
+  }, []);
+  function selectPackage(slug: (typeof packages)[number]["slug"]) {
+    setSelected(slug);
+    const url = new URL(window.location.href);
+    url.searchParams.set("package", slug);
+    window.history.replaceState(
+      window.history.state,
+      "",
+      url.pathname + url.search + url.hash,
+    );
+  }
+
   const current = situations[situation];
   const offer = packages.find((p) => p.slug === selected)!;
   const entrance = reduced ? false : { opacity: 0, y: 14 };
@@ -108,7 +136,7 @@ export default function AgencyHome() {
           </p>
           <div className="v2-actions">
             <a className="v2-button" href="#v2-packages">
-              Find your engagement <span aria-hidden="true">↗</span>
+              Compare engagements <span aria-hidden="true">↗</span>
             </a>
             <a className="v2-link" href={withBase("/founder/")}>
               More about me <span aria-hidden="true">→</span>
@@ -153,7 +181,6 @@ export default function AgencyHome() {
                 onClick={() => {
                   setRotationEnabled(false);
                   setSituation(i);
-                  setSelected(item.package);
                 }}
               >
                 {item.label}
@@ -203,6 +230,12 @@ export default function AgencyHome() {
                   <span aria-hidden="true">↳</span>
                   <p>{current.result}</p>
                 </div>
+                <a
+                  className="v2-scenario-action"
+                  href={withBase(`/services/${current.package}/`)}
+                >
+                  {current.action}
+                </a>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -263,7 +296,7 @@ export default function AgencyHome() {
               className="v2-service-card"
               href="#v2-packages"
               key={service.slug}
-              onClick={() => setSelected(service.slug as typeof selected)}
+              onClick={() => selectPackage(service.slug as typeof selected)}
             >
               <div className="v2-service-card-top">
                 <span>0{i + 1}</span>
@@ -289,16 +322,20 @@ export default function AgencyHome() {
           <h2 id="experience-title">Work I’ve led.</h2>
           <p>
             Selected projects from my previous leadership and engineering roles,
-            across healthcare, language systems and speech.
+            across AI leadership, document workflows and product engineering.
           </p>
         </div>
         <div className="v2-evidence-grid">
-          {founderExperience.slice(0, 3).map((item) => (
+          {[
+            founderExperience[0],
+            founderExperience[4],
+            founderExperience[5],
+          ].map((item) => (
             <article key={item.domain}>
               <h3>{item.domain}</h3>
               <p className="v2-evidence-role">{item.role}</p>
-              <p>{item.work}</p>
               <p>{item.contribution}</p>
+              <p className="v2-evidence-connection">{item.connection}</p>
             </article>
           ))}
         </div>
@@ -451,12 +488,13 @@ export default function AgencyHome() {
               type="button"
               key={p.slug}
               aria-pressed={selected === p.slug}
-              onClick={() => setSelected(p.slug)}
+              onClick={() => selectPackage(p.slug)}
             >
               <span className="v2-small-label">
                 0{i + 1} / {p.timeline}
               </span>
               <strong>{p.name}</strong>
+              <span className="v2-package-fit">{p.fit}</span>
               <span>
                 {p.price}
                 <span className="v2-picker-unit"> {p.unit}</span>

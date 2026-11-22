@@ -296,3 +296,21 @@ test("the new design is the indexed default and preview routes point to canonica
   }
   assert.ok(!read("sitemap.xml").includes("/v2/"));
 });
+
+test("engagement comparison exposes fit and preserves the package when returning", () => {
+  const home = read("index.html");
+  assert.equal((home.match(/class="v2-package-fit"/g) || []).length, 4);
+  assert.ok(home.includes('class="v2-scenario-action"'));
+  assert.ok(home.includes("Explore AI leadership"));
+  assert.ok(home.includes("Market research &amp; document intelligence"));
+  assert.ok(home.includes("GenAI strategy &amp; product engineering"));
+  assert.ok(home.includes('href="/ai-leadership/contact/"'));
+  for (const slug of ["discovery", "build", "partnership", "leadership"]) {
+    const html = read(`services/${slug}/index.html`);
+    assert.ok(
+      html.includes(`href="/ai-leadership/?package=${slug}#v2-packages"`),
+      `Comparison keeps ${slug}`,
+    );
+    assert.ok(!html.includes('href="/ai-leadership/services/#packages"'));
+  }
+});

@@ -11,6 +11,7 @@ export const packages = [
   {
     slug: "discovery",
     name: "Discovery sprint",
+    fit: "One opportunity to assess",
     category: "Before committing to a build",
     price: "€4,500",
     unit: "fixed scope",
@@ -38,6 +39,7 @@ export const packages = [
   {
     slug: "build",
     name: "Focused build",
+    fit: "One release to ship",
     category: "One project, agreed scope",
     price: "From €18,000",
     unit: "per project",
@@ -65,6 +67,7 @@ export const packages = [
   {
     slug: "partnership",
     name: "Delivery partnership",
+    fit: "Ongoing delivery capacity",
     category: "Ongoing engineering capacity",
     price: "From €24,000",
     unit: "per month",
@@ -92,6 +95,7 @@ export const packages = [
   {
     slug: "leadership",
     name: "Fractional AI / CTO leadership",
+    fit: "Senior AI direction",
     category: "Ongoing AI and technology leadership",
     price: "From €7,500",
     unit: "per month",
@@ -153,4 +157,8 @@ export function pageMetadata(
       images: [`${siteUrl}/agency-og.png`],
     },
   };
+}
+
+export function packageComparisonPath(slug: (typeof packages)[number]["slug"]) {
+  return `/?package=${slug}#v2-packages`;
 }

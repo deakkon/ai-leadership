@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import type { packages } from "../lib/agency";
+import { packageComparisonPath, type packages } from "../lib/agency";
 import type { PackageStory } from "../lib/package-stories";
 import { withBase } from "../lib/site";
 import AnimatedChapter, { chapterItem } from "./AnimatedChapter";
@@ -261,7 +261,7 @@ export default function PackageExplorer({
               ) : (
                 <a
                   className="agency-text-link"
-                  href={withBase("/services/#packages")}
+                  href={withBase(packageComparisonPath(offer.slug))}
                 >
                   Compare the packages →
                 </a>

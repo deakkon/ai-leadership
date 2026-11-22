@@ -1,0 +1,3 @@
+# Local design tools and review archives; keep them out of the public site repo.
+.agents/
+.impeccable/
